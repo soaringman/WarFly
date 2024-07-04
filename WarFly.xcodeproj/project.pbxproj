@@ -15,6 +15,7 @@
 		F05448F52C2DAFA5003950CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F05448F32C2DAFA5003950CD /* LaunchScreen.storyboard */; };
 		F08A19722C34269500432FFA /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08A19712C34269500432FFA /* Background.swift */; };
 		F08A19742C3593EA00432FFA /* Island.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08A19732C3593EA00432FFA /* Island.swift */; };
+		F0E047212C36F57900C123AD /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E047202C36F57900C123AD /* Cloud.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		F05448F42C2DAFA5003950CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F08A19712C34269500432FFA /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		F08A19732C3593EA00432FFA /* Island.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Island.swift; sourceTree = "<group>"; };
+		F0E047202C36F57900C123AD /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				F05448E42C2DAFA4003950CD /* AppDelegate.swift */,
 				F05448EA2C2DAFA4003950CD /* GameScene.swift */,
 				F08A19732C3593EA00432FFA /* Island.swift */,
+				F0E047202C36F57900C123AD /* Cloud.swift */,
 				F05448EC2C2DAFA4003950CD /* GameViewController.swift */,
 				F05448EE2C2DAFA4003950CD /* Main.storyboard */,
 				F05448F12C2DAFA5003950CD /* Assets.xcassets */,
@@ -143,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F05448EB2C2DAFA4003950CD /* GameScene.swift in Sources */,
+				F0E047212C36F57900C123AD /* Cloud.swift in Sources */,
 				F05448ED2C2DAFA4003950CD /* GameViewController.swift in Sources */,
 				F05448E52C2DAFA4003950CD /* AppDelegate.swift in Sources */,
 				F08A19742C3593EA00432FFA /* Island.swift in Sources */,

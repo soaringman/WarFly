@@ -8,10 +8,10 @@
 import SpriteKit
 import GameplayKit
 
-class Island: SKSpriteNode {
+final class Island: SKSpriteNode, IGameBackgroundSpritable {
 
-	static func populateIsland(at point: CGPoint) -> Island {
-		let islandImageName = configureIslandName()
+	static func populateSprite(at point: CGPoint) -> Island {
+		let islandImageName = configureName()
 		let island = Island(imageNamed: islandImageName)
 
 		//конфигурируем остров
@@ -23,7 +23,7 @@ class Island: SKSpriteNode {
 		return island
 	}
 	//Метод - рандомное измение островов (имени выводимого острова)
-	static func configureIslandName() -> String {
+	static func configureName() -> String {
 		let distribution = GKRandomDistribution(lowestValue: 1, highestValue: 4)
 		let randomNumber = distribution.nextInt()
 		let imageName = "is" + "\(randomNumber)"
