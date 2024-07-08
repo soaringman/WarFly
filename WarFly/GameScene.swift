@@ -12,6 +12,9 @@ class GameScene: SKScene {
 
     override func didMove(to view: SKView) {
 		
+		//создаем наш самолет (если его нет то приложение должно упасть)
+		var player: SKSpriteNode!
+
 		//конфигурирование подложки
 		let screenCenterPoint = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
 		let background = Background.populateBackground(at: screenCenterPoint)
@@ -26,14 +29,15 @@ class GameScene: SKScene {
 																					Int(screen.size.width)))
 			let randomY: CGFloat = CGFloat(GKRandomSource.sharedRandom().nextInt(upperBound:
 																					Int(screen.size.height)))
+
 			let island = Island.populateSprite(at: CGPoint(x: randomX, y: randomY))
-
-
 			self.addChild(island)
 
 			let cloud = Cloud.populateSprite(at: CGPoint(x: randomX, y: randomY))
 			self.addChild(cloud)
-
 		}
+
+		player = PlayerPlane.populate(at: CGPoint(x: screen.size.width / 2, y: 100))
+		self.addChild(player)
     }
 }
