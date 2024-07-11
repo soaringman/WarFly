@@ -21,6 +21,8 @@ final class Island: SKSpriteNode, IGameBackgroundSpritable {
 		island.zPosition = 1
 		island.name = "backgroundSprite"
 		//тем самым мы сместим значение координаты y нашей точки - point с центра на верхнюю гриницу
+		//но как выяснилось это почему то не сработало для каких то пределенных обьектов
+		//(у них не определился или некорректно определился anchorPoint)
 		island.anchorPoint = CGPoint(x: 0.5, y: 1.0)
 		island.run(rotateForRandomAngle())
 		island.run(move(from: island.position))
