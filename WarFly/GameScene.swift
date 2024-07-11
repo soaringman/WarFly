@@ -23,7 +23,42 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
 
 		configureStartScene()
+		spawnClouds()
+		spawnIsland()
     }
+	//Метод - генерирующий облака и интервалы (попробовать сделать реализацию через протокол)!!!
+	fileprivate func spawnClouds() {
+		//первый метод (эшкн) будет задавать интервал в течении которого ничего происходить не будет
+		let spawnCloudWait = SKAction.wait(forDuration: 1)
+
+		//второй метод (экшн) будет генерировать острова и облака
+		let spawnCloudAction = SKAction.run {
+			let cloud = Cloud.populate()
+			self.addChild(cloud)
+		}
+
+		//Теперь создаем беспонечную последоватьность куда будем генерировать наши обьекты
+		let spawnCloudSequence = SKAction.sequence([spawnCloudWait, spawnCloudAction])
+		let spawnCloudForever = SKAction.repeatForever(spawnCloudSequence)
+		run(spawnCloudForever)
+	}
+
+	//Метод - генерирующий острова и интервалы (попробовать сделать реализацию через протокол)!!!
+	fileprivate func spawnIsland() {
+		//первый метод (эшкн) будет задавать интервал в течении которого ничего происходить не будет
+		let spawnIslandWait = SKAction.wait(forDuration: 2)
+
+		//второй метод (экшн) будет генерировать острова и облака
+		let spawnIslandAction = SKAction.run {
+			let island = Island.populate()
+			self.addChild(island)
+		}
+
+		//Теперь создаем беспонечную последоватьность куда будем генерировать наши обьекты
+		let spawnIslandSequence = SKAction.sequence([spawnIslandWait, spawnIslandAction])
+		let spawnIslandForever = SKAction.repeatForever(spawnIslandSequence)
+		run(spawnIslandForever)
+	}
 
 	fileprivate func configureStartScene() {
 
