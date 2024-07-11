@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 
 protocol IGameBackgroundSpritable  {
-	static func populate() -> Self
+	static func populate(at point: CGPoint?) -> Self
 	//добавим метод для рандомной генерации обьектов выше сцены (что бы было чему вылетать на встречу самолету)
 	static func randomPoint() -> CGPoint
 }
@@ -22,8 +22,8 @@ extension IGameBackgroundSpritable {
 		//напишем константу в которую будем генерить наши радомные обьекты в пределах
 		//от +100 вверх от экрана до +200 вверх от экрана
 		let disribution = GKRandomDistribution(
-			lowestValue: Int(screen.size.height) + 100,
-			highestValue: Int(screen.size.height) + 200
+			lowestValue: Int(screen.size.height) + 400,
+			highestValue: Int(screen.size.height) + 500
 		)
 		//теперь применим эту генерацию для оси y
 		//next используется для того, что бы мы смогли сгенерировать следующее значение в указанном выше диапазоне

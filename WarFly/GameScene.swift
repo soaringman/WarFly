@@ -33,7 +33,7 @@ class GameScene: SKScene {
 
 		//второй метод (экшн) будет генерировать острова и облака
 		let spawnCloudAction = SKAction.run {
-			let cloud = Cloud.populate()
+			let cloud = Cloud.populate(at: nil)
 			self.addChild(cloud)
 		}
 
@@ -50,7 +50,7 @@ class GameScene: SKScene {
 
 		//второй метод (экшн) будет генерировать острова и облака
 		let spawnIslandAction = SKAction.run {
-			let island = Island.populate()
+			let island = Island.populate(at: nil)
 			self.addChild(island)
 		}
 
@@ -105,6 +105,13 @@ class GameScene: SKScene {
 			player.position.x = self.size.width + 70
 		} else if player.position.x > self.size.width + 70 {
 			player.position.x = -70
+		}
+
+		//Метод - который проверяет, если позиция объекта по оси у меньше нуля то такой объект надо удалить со сцены
+		enumerateChildNodes(withName: "backgroundSprite") { (node, stop) in
+			if node.position.y < -150 {
+				node.removeFromParent()
+			}
 		}
 	}
 }

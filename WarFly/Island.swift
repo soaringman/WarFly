@@ -11,34 +11,37 @@ import GameplayKit
 final class Island: SKSpriteNode, IGameBackgroundSpritable {
 
 	//используя этот метод у нас отсрова плывут в одну точку
-	static func populate() -> Island {
+	static func populate(at point: CGPoint?) -> Island {
 		let islandImageName = configureName()
 		let island = Island(imageNamed: islandImageName)
 
 		//конфигурируем остров
 		island.setScale(randomScaleFactor)
-		island.position = randomPoint()
+		island.position = point ?? randomPoint()
 		island.zPosition = 1
+		island.name = "backgroundSprite"
+		//тем самым мы сместим значение координаты y нашей точки - point с центра на верхнюю гриницу
+		island.anchorPoint = CGPoint(x: 0.5, y: 1.0)
 		island.run(rotateForRandomAngle())
 		island.run(move(from: island.position))
 
 		return island
 	}
 
-	//используя этот метод острова будут плыть нормально (с верху вниз)
-		static func populate(at point: CGPoint) -> Island {
-			let islandImageName = configureName()
-			let island = Island(imageNamed: islandImageName)
-
-			//конфигурируем остров
-			island.setScale(randomScaleFactor)
-			island.position = point
-			island.zPosition = 1
-			island.run(rotateForRandomAngle())
-			island.run(move(from: island.position))
-
-			return island
-	}
+//	//используя этот метод острова будут плыть нормально (с верху вниз)
+//		static func populate(at point: CGPoint) -> Island {
+//			let islandImageName = configureName()
+//			let island = Island(imageNamed: islandImageName)
+//
+//			//конфигурируем остров
+//			island.setScale(randomScaleFactor)
+//			island.position = point
+//			island.zPosition = 1
+//			island.run(rotateForRandomAngle())
+//			island.run(move(from: island.position))
+//
+//			return island
+//	}
 	//Метод - рандомное измение островов (имени выводимого острова)
 	fileprivate static func configureName() -> String {
 		let distribution = GKRandomDistribution(lowestValue: 1, highestValue: 4)
