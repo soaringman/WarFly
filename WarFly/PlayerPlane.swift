@@ -8,12 +8,15 @@
 import SpriteKit
 import CoreMotion
 
+
 class PlayerPlane: SKSpriteNode {
 
+	//нужно для того что бы мы могли отталкиваться от размеров экрана
 	let screenSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 
-	//Создаем менеджера - для считывания показаний акселерометра
+	//Создаем менеджера - для считывания показаний акселерометра (отслежавания наших поворотов)
 	let motionManager = CMMotionManager()
+	// для трасформации значения аксерелометра в скорость полета по оси х
 	var xAcceleration: CGFloat = 0
 
 	//Создадим массив текстур для нашей анимации
@@ -22,9 +25,13 @@ class PlayerPlane: SKSpriteNode {
 	var forwardTextureArrayAnimation = [SKTexture]()
 
 	//Определим переменные для поворотов
+	//для определения направления в котором мы летим (лево или право)
 	var moveDirection: TurnDirection = .forward
+	//флаг для понимания, была ли выполнена анимация поворота
+	//что бы в дальнейшем использовать его в методе который выполняет анимцию 1 раз если мы не меняем направления
 	var stillTurning = false
 
+	//метод - для создания нашего самолета
 	static func populate(at point: CGPoint) -> PlayerPlane {
 
 		//Создаем текстуру. Текстура удобнее тем что она может изменяться в процессе а изображение - нет
@@ -61,7 +68,9 @@ class PlayerPlane: SKSpriteNode {
 		//подгрузим сначала наши текстуры
 		planeAimationFillArray()
 		motionManager.accelerometerUpdateInterval = 0.2
-		motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data, error) in
+		//так же что бы не было цикла сильных ссылок прописываем что мы не ссылаемся по жесткой ссылке на наш
+		//лист захвата пропишем [unowned self]
+		motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { [unowned self] (data, error) in
 
 			if let data = data {
 				let acceleration = data.acceleration
@@ -69,6 +78,18 @@ class PlayerPlane: SKSpriteNode {
 				print(self.xAcceleration)
 			}
 		}
+
+		// так как мы ходим запускать проверку периодически с разницей в 1 секунду то
+		let planeWaitAction = SKAction.wait(forDuration: 1.0)
+		//так же что бы не было цикла сильных ссылок прописываем что мы не ссылаемся по жесткой ссылке на наш
+		//лист захвата пропишем [unowned self]
+		let planeDirectionCheckAction = SKAction.run { [unowned self] in
+			self.movementDirectionCheck()
+		}
+		//напишем непрерывный запуск наших методов
+		let planeSequence = SKAction.sequence([planeWaitAction, planeDirectionCheckAction])
+		let planeSequnceForever = SKAction.repeatForever(planeSequence)
+		self.run(planeSequnceForever)
 	}
 
 	//Метод - загружающий наши спрайты в соответствующие массивы
@@ -131,17 +152,23 @@ class PlayerPlane: SKSpriteNode {
 	}
 
 	//Метод определяющий какую анимацию задействовать, так же проверяющий что если анимация уже происходит, то ее
-	//не прерываем, и до того момента пока мы не полетим в одну сторону - анимацию проигрывтаь только 1 раз
+	//не прерываем, и до того момента пока мы не полетим в другую сторону - анимацию проигрывать только 1 раз
 	fileprivate func movementDirectionCheck() {
-		if xAcceleration > 0.1, moveDirection != .onRight, stillTurning == false {
+		if xAcceleration > 0.02, moveDirection != .onRight, stillTurning == false {
 			//поворот на право
 			stillTurning = true
 			moveDirection = .onRight
+			turnPlane(direction: .onRight)
 
-		} else if xAcceleration < 0.1, moveDirection != .onLeft, stillTurning == false {
+		} else if xAcceleration < -0.02, moveDirection != .onLeft, stillTurning == false {
 			//поворот на лево
+			stillTurning = true
+			moveDirection = .onLeft
+			turnPlane(direction: .onLeft)
+
 		} else if stillTurning == false {
 			//полет прямо
+			turnPlane(direction: .forward)
 		}
 	}
 
@@ -157,8 +184,19 @@ class PlayerPlane: SKSpriteNode {
 			array = forwardTextureArrayAnimation
 		}
 		//теперь напишем несколько методов по анимации (прямая и обратная) для всех наших поворотов
-		//время на видео 11:09
-//		let forwardAction = SKAction.animate(with: [SKTexture], timePerFrame: <#T##TimeInterval#>, resize: <#T##Bool#>, restore: <#T##Bool#>)
+		//сделаем прямую анимацию из массива array, со временем 0.05б с изменением текстуры в масштабе,
+		//не возвращатся к первому кадру анимации
+		let forwardAction = SKAction.animate(with: array, timePerFrame: 0.035, resize: true, restore: false)
+		//теперь проведем обратную анимацию
+		let backwardAction = SKAction.animate(with: array.reversed(), timePerFrame: 0.035, resize: true, restore: false)
+		//так как полная анимация у нас представляет из себя последовательность (прямая + обратная) то
+		let sequenceAction = SKAction.sequence([forwardAction, backwardAction])
+		//тперь запустим анимацию
+		//так же что бы не было цикла сильных ссылок прописываем что мы не ссылаемся по жесткой ссылке на наш 
+		//лист захвата пропишем [unowned self]
+		self.run(sequenceAction) { [unowned self] in
+			self.stillTurning = false
+		}
 	}
 }
 
