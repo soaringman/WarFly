@@ -25,7 +25,16 @@ class GameScene: SKScene {
 		spawnClouds()
 		spawnIsland()
 		player.performFly()
+
+		//создали обьект типа PowerUP
+		let powerUp = PowerUp()
+		//запустили анимацию
+		powerUp.performRotation()
+		powerUp.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+		//добавим ее на нашу сцену
+		self.addChild(powerUp)
     }
+
 	//Метод - генерирующий облака и интервалы (попробовать сделать реализацию через протокол)!!!
 	fileprivate func spawnClouds() {
 		//первый метод (эшкн) будет задавать интервал в течении которого ничего происходить не будет

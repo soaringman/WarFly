@@ -16,6 +16,8 @@
 		F0584A042C3FECDA007E1BE0 /* IGameBackgroundSpritable+Exstension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0584A032C3FECDA007E1BE0 /* IGameBackgroundSpritable+Exstension.swift */; };
 		F08A19722C34269500432FFA /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08A19712C34269500432FFA /* Background.swift */; };
 		F08A19742C3593EA00432FFA /* Island.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08A19732C3593EA00432FFA /* Island.swift */; };
+		F0B26FD02C4968CB003DA27A /* PowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B26FCF2C4968CB003DA27A /* PowerUp.swift */; };
+		F0B26FD22C496D69003DA27A /* GreenPowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F0B26FD12C496D69003DA27A /* GreenPowerUp.atlas */; };
 		F0D090092C3BE61D005A2634 /* PlayerPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D090082C3BE61D005A2634 /* PlayerPlane.swift */; };
 		F0D0900B2C3BEA22005A2634 /* PlayerPlane.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F0D0900A2C3BEA22005A2634 /* PlayerPlane.atlas */; };
 		F0E047212C36F57900C123AD /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E047202C36F57900C123AD /* Cloud.swift */; };
@@ -32,6 +34,8 @@
 		F0584A032C3FECDA007E1BE0 /* IGameBackgroundSpritable+Exstension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IGameBackgroundSpritable+Exstension.swift"; sourceTree = "<group>"; };
 		F08A19712C34269500432FFA /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		F08A19732C3593EA00432FFA /* Island.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Island.swift; sourceTree = "<group>"; };
+		F0B26FCF2C4968CB003DA27A /* PowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUp.swift; sourceTree = "<group>"; };
+		F0B26FD12C496D69003DA27A /* GreenPowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = GreenPowerUp.atlas; sourceTree = "<group>"; };
 		F0D090082C3BE61D005A2634 /* PlayerPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPlane.swift; sourceTree = "<group>"; };
 		F0D0900A2C3BEA22005A2634 /* PlayerPlane.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerPlane.atlas; sourceTree = "<group>"; };
 		F0E047202C36F57900C123AD /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 				F05448E42C2DAFA4003950CD /* AppDelegate.swift */,
 				F05448EA2C2DAFA4003950CD /* GameScene.swift */,
 				F0D090082C3BE61D005A2634 /* PlayerPlane.swift */,
+				F0B26FCF2C4968CB003DA27A /* PowerUp.swift */,
 				F08A19732C3593EA00432FFA /* Island.swift */,
 				F0E047202C36F57900C123AD /* Cloud.swift */,
 				F0584A032C3FECDA007E1BE0 /* IGameBackgroundSpritable+Exstension.swift */,
@@ -78,6 +83,7 @@
 				F05448F12C2DAFA5003950CD /* Assets.xcassets */,
 				F08A19712C34269500432FFA /* Background.swift */,
 				F05448F32C2DAFA5003950CD /* LaunchScreen.storyboard */,
+				F0B26FD12C496D69003DA27A /* GreenPowerUp.atlas */,
 				F0D0900A2C3BEA22005A2634 /* PlayerPlane.atlas */,
 			);
 			path = WarFly;
@@ -142,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F05448F02C2DAFA4003950CD /* Main.storyboard in Resources */,
+				F0B26FD22C496D69003DA27A /* GreenPowerUp.atlas in Resources */,
 				F0D0900B2C3BEA22005A2634 /* PlayerPlane.atlas in Resources */,
 				F05448F22C2DAFA5003950CD /* Assets.xcassets in Resources */,
 				F05448F52C2DAFA5003950CD /* LaunchScreen.storyboard in Resources */,
@@ -162,6 +169,7 @@
 				F05448ED2C2DAFA4003950CD /* GameViewController.swift in Sources */,
 				F05448E52C2DAFA4003950CD /* AppDelegate.swift in Sources */,
 				F08A19742C3593EA00432FFA /* Island.swift in Sources */,
+				F0B26FD02C4968CB003DA27A /* PowerUp.swift in Sources */,
 				F08A19722C34269500432FFA /* Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
