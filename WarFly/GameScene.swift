@@ -24,7 +24,14 @@ class GameScene: SKScene {
 		configureStartScene()
 		spawnClouds()
 		spawnIsland()
-		player.performFly()
+
+		//поправим баг -  в начале игры у нас вместо текстуры самолета появляется белый квадрат
+		//создаем переменную в которой говорим что мы хотим отсрочить запуск на 1 наносекунду
+		let deadline = DispatchTime.now() + .nanoseconds(1)
+		//отсрачиваем запуск нашего метода performFly
+		DispatchQueue.main.asyncAfter(deadline: deadline) { [unowned self] in
+			self.player.performFly()
+		}
 
 		//создали обьект типа PowerUP
 		let powerUp = PowerUp()
