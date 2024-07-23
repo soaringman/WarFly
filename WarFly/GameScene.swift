@@ -40,6 +40,22 @@ class GameScene: SKScene {
 		powerUp.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
 		//добавим ее на нашу сцену
 		self.addChild(powerUp)
+
+	// Поработает со вражескими обьектами
+		//СОздадим атлас текстур для нашего врага
+		let enemyTextureAtlas = SKTextureAtlas(named: "Enemy_1")
+		//сделавем предзагрузку атласа
+		SKTextureAtlas.preloadTextureAtlases([enemyTextureAtlas]) {
+
+			Enemy.textureAtlas = enemyTextureAtlas
+			//Создаем вражеский самолет
+			let enemy = Enemy()
+			//расположим его на экране
+			enemy.position = CGPoint(x: self.size.width / 2, y: self.size.height * 2 / 3)
+			//добавим его на наш экран
+			self.addChild(enemy)
+		}
+
     }
 
 	//Метод - генерирующий облака и интервалы (попробовать сделать реализацию через протокол)!!!
