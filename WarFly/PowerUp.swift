@@ -19,7 +19,7 @@ class PowerUp: SKSpriteNode {
 		super.init(texture: greenTexture,
 					 color: .clear,
 					 size: initialSize)
-		self.name = "powerUp"
+		self.name = "sprite"
 		self.zPosition = 20
 	}
 

@@ -19,7 +19,7 @@ final class Island: SKSpriteNode, IGameBackgroundSpritable {
 		island.setScale(randomScaleFactor)
 		island.position = point ?? randomPoint()
 		island.zPosition = 1
-		island.name = "backgroundSprite"
+		island.name = "sprite"
 		//тем самым мы сместим значение координаты y нашей точки - point с центра на верхнюю гриницу
 		//но как выяснилось это почему то не сработало для каких то пределенных обьектов
 		//(у них не определился или некорректно определился anchorPoint)

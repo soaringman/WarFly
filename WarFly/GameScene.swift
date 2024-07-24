@@ -33,6 +33,12 @@ class GameScene: SKScene {
 			self.player.performFly()
 		}
 
+		spawnPowerUp()
+		spawnEnemiesCountInSpiral(count: 5)
+
+    }
+
+	fileprivate func spawnPowerUp() {
 		//создали обьект типа PowerUP
 		let powerUp = PowerUp()
 		//запустили анимацию
@@ -40,23 +46,36 @@ class GameScene: SKScene {
 		powerUp.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
 		//добавим ее на нашу сцену
 		self.addChild(powerUp)
+	}
 
-	// Поработает со вражескими обьектами
+	fileprivate func spawnEnemiesCountInSpiral(count: Int) {
+		// Поработает со вражескими обьектами
 		//СОздадим атлас текстур для нашего врага
 		let enemyTextureAtlas = SKTextureAtlas(named: "Enemy_1")
 		//сделавем предзагрузку атласа
 		SKTextureAtlas.preloadTextureAtlases([enemyTextureAtlas]) {
 
 			Enemy.textureAtlas = enemyTextureAtlas
-			//Создаем вражеский самолет
-			let enemy = Enemy()
-			//расположим его на экране
-			enemy.position = CGPoint(x: self.size.width / 2, y: self.size.height * 2 / 3)
-			//добавим его на наш экран
-			self.addChild(enemy)
-		}
+			//сделаем задежку, что бы все наши враги не родились в одно и то же время
+			let waitEnemyAction = SKAction.wait(forDuration: 1.0)
+			let spawnEnemy = SKAction.run {
 
-    }
+				//Создаем вражеский самолет
+				let enemy = Enemy()
+				//расположим его на экране
+				enemy.position = CGPoint(x: self.size.width / 2, y: self.size.height + 110)
+				//добавим его на наш экран
+				self.addChild(enemy)
+				enemy.flyInSpiral()
+			}
+
+			//После этого создадим последовательность задержки и нашей спирали из врагов
+			let spawnEnemyAction = SKAction.sequence([waitEnemyAction, spawnEnemy])
+			//повторим появление врага 5 раз
+			let repeatEnemyAction = SKAction.repeat(spawnEnemyAction, count: count)
+			self.run(repeatEnemyAction)
+		}
+	}
 
 	//Метод - генерирующий облака и интервалы (попробовать сделать реализацию через протокол)!!!
 	fileprivate func spawnClouds() {
@@ -121,11 +140,11 @@ class GameScene: SKScene {
 	override func didSimulatePhysics() {
 
 		player.checkXPosition()
-		
+
 		//Метод - который проверяет, если позиция объекта по оси у меньше нуля то такой объект надо удалить со сцены
-		enumerateChildNodes(withName: "backgroundSprite") { (node, stop) in
+		enumerateChildNodes(withName: "sprite") { (node, stop) in
 			//пришлось корректировать тут (поэтому условие -150 а не 0 как по логике должно быть
-			if node.position.y < -150 {
+			if node.position.y < -100 {
 				node.removeFromParent()
 			}
 		}
