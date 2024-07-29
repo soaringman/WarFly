@@ -9,10 +9,11 @@ import SpriteKit
 
 class Enemy: SKSpriteNode {
 	static var textureAtlas: SKTextureAtlas?
+	var enemyTexture: SKTexture!
 
-	init() {
-		let textureEnemy = Enemy.textureAtlas?.textureNamed("airplane_4ver2_13")
-		super.init(texture: textureEnemy, color: .clear, size: CGSize(width: 221, height: 204))
+	init(enemyTexture: SKTexture) {
+		let texture = enemyTexture
+		super.init(texture: texture, color: .clear, size: CGSize(width: 221, height: 204))
 		self.xScale = 0.5
 		self.yScale = -0.5
 		self.zPosition = 20
@@ -22,7 +23,7 @@ class Enemy: SKSpriteNode {
 	func flyInSpiral() {
 		let screenSize = UIScreen.main.bounds
 		let timeHorizontal: Double = 3
-		let timeVertical: Double = 10
+		let timeVertical: Double = 5
 		//Будет перемещаться по оси х не долетая 50 поинтов до края экрана
 		let moveLeft = SKAction.moveTo(x: 50, duration: timeHorizontal)
 
@@ -35,11 +36,19 @@ class Enemy: SKSpriteNode {
 		//Повторим тоже для движения в право
 		moveRight.timingMode = .easeInEaseOut
 
+		//напишем метод для случайного выбора стороны полета по оси х - значение будет либо 0 либо 1
+		let randomFlyingSide = Int(arc4random_uniform(2))
+
 		//Создадим последовательность движений в лево и право по оси х
-		let enemyAsideMovementSequence = SKAction.sequence([moveLeft, moveRight])
+		//напишем условие с помощью тернарного оператора
+		//(если случайное значение равно 0 то равно "в лево" и последовательность сначало в лево а потом в право
+		//либо если не равно то наоборот
+		let enemyAsideMovementSequence = randomFlyingSide == EnemyDirection.left.rawValue ?
+		SKAction.sequence([moveLeft, moveRight]) : SKAction.sequence([moveRight, moveLeft])
+
 		let enemyForeverAsideMovement = SKAction.repeatForever(enemyAsideMovementSequence)
 
-		//Создадим последовательность движений по оси у
+		//Создадим создадим движение по оси у
 		let enemyForwardMovement = SKAction.moveTo(y: -105, duration: timeVertical)
 
 		//Создадим движение по спирали - для этого обьединим движения по оси х и у
@@ -50,4 +59,11 @@ class Enemy: SKSpriteNode {
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+}
+
+enum EnemyDirection: Int {
+	case left = 0
+	//для второго кейса я могу не присваивать значение явно так как я указал что значения Int и указал
+	//значение первого кейса
+	case right
 }

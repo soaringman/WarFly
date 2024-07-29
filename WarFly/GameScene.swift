@@ -34,8 +34,7 @@ class GameScene: SKScene {
 		}
 
 		spawnPowerUp()
-		spawnEnemiesCountInSpiral(count: 5)
-
+		spawnEnemies()
     }
 
 	fileprivate func spawnPowerUp() {
@@ -48,20 +47,43 @@ class GameScene: SKScene {
 		self.addChild(powerUp)
 	}
 
-	fileprivate func spawnEnemiesCountInSpiral(count: Int) {
-		// Поработает со вражескими обьектами
-		//СОздадим атлас текстур для нашего врага
-		let enemyTextureAtlas = SKTextureAtlas(named: "Enemy_1")
-		//сделавем предзагрузку атласа
-		SKTextureAtlas.preloadTextureAtlases([enemyTextureAtlas]) {
+	fileprivate func spawnEnemies() {
+		let waitForAction = SKAction.wait(forDuration: 3.0)
+		let spawnOfSpiralAction = SKAction.run { [unowned self] in
+			self.spawnEnemiesOfSpiral()
+		}
+		//тройная вложенность и вариация на тему как можно быстро записать запуск последовательности бесконечно
+		//В Боевом коде так делать не стоит, разве что для проверки работоспособности
+		self.run(SKAction.repeatForever(SKAction.sequence([waitForAction, spawnOfSpiralAction])))
 
-			Enemy.textureAtlas = enemyTextureAtlas
+	}
+
+	fileprivate func spawnEnemiesOfSpiral() {
+		// Поработает со вражескими обьектами
+		//СОздадим атлас текстур для нашего врага 1 и 2
+		let enemyTextureAtlas1 = SKTextureAtlas(named: "Enemy_1")
+		let enemyTextureAtlas2 = SKTextureAtlas(named: "Enemy_2")
+		//сделавем предзагрузку атласа
+		SKTextureAtlas.preloadTextureAtlases([enemyTextureAtlas1, enemyTextureAtlas2]) { [unowned self] in
+
+			//напишем рандомазер который будет случайно выбирать либо первый атлас либо второй
+			let randomnumber = Int(arc4random_uniform(2))
+			//создадим массив атласов наших врагов (2 атласа)
+			let arrayOfAtlases = [enemyTextureAtlas1, enemyTextureAtlas2]
+			//теперь создадим переменную с номером атласа
+			let textureEnemyAtlas = arrayOfAtlases[randomnumber]
+			
 			//сделаем задежку, что бы все наши враги не родились в одно и то же время
 			let waitEnemyAction = SKAction.wait(forDuration: 1.0)
-			let spawnEnemy = SKAction.run {
+			let spawnEnemy = SKAction.run { [unowned self] in
 
+				//Как выяснилось подзднее массив имен текстур а атласе приходит несоритрованный и поэтому мы не получаем
+				//ту текстуру под номером 12, которую хотели испорльзовать, и мы отсортируем наш полученный массив имен текстур
+				let sortedTextureNames = textureEnemyAtlas.textureNames.sorted()
+				//Подготовим текстуру вражеского самолета
+				let currentEnemyTexture = textureEnemyAtlas.textureNamed(sortedTextureNames[12])
 				//Создаем вражеский самолет
-				let enemy = Enemy()
+				let enemy = Enemy(enemyTexture: currentEnemyTexture)
 				//расположим его на экране
 				enemy.position = CGPoint(x: self.size.width / 2, y: self.size.height + 110)
 				//добавим его на наш экран
@@ -71,8 +93,8 @@ class GameScene: SKScene {
 
 			//После этого создадим последовательность задержки и нашей спирали из врагов
 			let spawnEnemyAction = SKAction.sequence([waitEnemyAction, spawnEnemy])
-			//повторим появление врага 5 раз
-			let repeatEnemyAction = SKAction.repeat(spawnEnemyAction, count: count)
+			//повторим появление врага 3 раза
+			let repeatEnemyAction = SKAction.repeat(spawnEnemyAction, count: 3)
 			self.run(repeatEnemyAction)
 		}
 	}
