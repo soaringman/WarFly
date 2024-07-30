@@ -39,7 +39,7 @@ class GameScene: SKScene {
 
 	fileprivate func spawnPowerUp() {
 		//создали обьект типа PowerUP
-		let powerUp = PowerUp()
+		let powerUp = GreenPowerUp()
 		//запустили анимацию
 		powerUp.performRotation()
 		powerUp.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
