@@ -184,8 +184,29 @@ class GameScene: SKScene {
 			//пришлось корректировать тут (поэтому условие -150 а не 0 как по логике должно быть
 			if node.position.y <= -100 {
 				node.removeFromParent()
-				if node.isKind(of: PowerUp.self) {}
 			}
 		}
+		//сделаем проверку в обратную сторону и удаление спрайтов наших выстрелов которые улетят за экран (у = + 100)
+		enumerateChildNodes(withName: "shotSprite") { (node, stop) in
+			//я хочу что бы если вылел за вернюю гриницу экрана + 100, он бы удалялся
+			if node.position.y >= self.size.height + 100 {
+				node.removeFromParent()
+			}
+		}
+	}
+
+	//Напишем новый метод, который будет создавать наш выстрел
+	fileprivate func playerFire() {
+		//создадим наш выстрел типа YellowShot
+		let shot = YellowShot()
+		shot.position = self.player.position
+		shot.startMovement()
+		self.addChild(shot)
+	}
+
+	//используем метод  TouchesBegan - который нам позволит делать что то когда будет зафиксировано прикосновение к
+	//экрану
+	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+		playerFire()
 	}
 }

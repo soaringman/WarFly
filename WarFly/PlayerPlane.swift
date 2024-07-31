@@ -44,7 +44,7 @@ class PlayerPlane: SKSpriteNode {
 		let playerPlane = PlayerPlane(texture: playerPlaneTexture)
 		playerPlane.setScale(0.5)
 		playerPlane.position = point
-		playerPlane.zPosition = 20
+		playerPlane.zPosition = 40
 
 		//Доп задание - можно с помощью диапазона задать - что бы какие то облака пролетали над самолетом,
 		//а какие то под самолетом
