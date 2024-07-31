@@ -26,8 +26,16 @@ class PowerUp: SKSpriteNode {
 		self.zPosition = 20
 	}
 
+	func startMovement() {
+		performRotation()
+		//зададим движение
+		let moveForward = SKAction.moveTo(y: -100, duration: 9)
+		//запустим его
+		self.run(moveForward)
+	}
+
 	//реализуем создание анимации
-	func performRotation() {
+	fileprivate func performRotation() {
 		for i in 1...15 {
 			//% значит что у нас сюда будет подставляться значение i,
 			//если i будет с одним знаком то первым числом будет 0

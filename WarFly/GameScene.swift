@@ -38,13 +38,29 @@ class GameScene: SKScene {
     }
 
 	fileprivate func spawnPowerUp() {
-		//создали обьект типа PowerUP
-		let powerUp = GreenPowerUp()
-		//запустили анимацию
-		powerUp.performRotation()
-		powerUp.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
-		//добавим ее на нашу сцену
-		self.addChild(powerUp)
+
+		//создадим экшн через замыкание
+		let spawnAction = SKAction.run {
+			//смоздадим рандомизатор на 2 значения (0 и 1)
+			let rundomNumber = Int(arc4random_uniform(2))
+			//напишем через тернарный оператор условие - если случайное число равно 0 то выбираем BluePOwerUp а иначе
+			//1 и GreenPowerUp
+			let powerUp = rundomNumber == 1 ? BluePowerUp() : GreenPowerUp()
+			//теперь определим еще одно рандоное число для нашего powerUp по оси х
+			let randomPositionX = arc4random_uniform(UInt32(self.size.width - 30))
+			//теперь используя позицию по оси х зададим расположение нашего powerUp
+			powerUp.position = CGPoint(x: CGFloat(randomPositionX), y: self.size.height + 100)
+			//теперь запустим наш экшн
+			powerUp.startMovement()
+			//добавим ее на нашу сцену
+			self.addChild(powerUp)
+		}
+		
+		//напишем райдомайзер для спавна наших powerUp
+		let randomTimeSpawn = Double(arc4random_uniform(11) + 10)
+		let waitAction = SKAction.wait(forDuration: randomTimeSpawn)
+
+		self.run(SKAction.repeatForever(SKAction.sequence([spawnAction, waitAction])))
 	}
 
 	fileprivate func spawnEnemies() {
@@ -166,8 +182,9 @@ class GameScene: SKScene {
 		//Метод - который проверяет, если позиция объекта по оси у меньше нуля то такой объект надо удалить со сцены
 		enumerateChildNodes(withName: "sprite") { (node, stop) in
 			//пришлось корректировать тут (поэтому условие -150 а не 0 как по логике должно быть
-			if node.position.y < -100 {
+			if node.position.y <= -100 {
 				node.removeFromParent()
+				if node.isKind(of: PowerUp.self) {}
 			}
 		}
 	}
