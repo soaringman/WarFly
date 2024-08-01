@@ -29,21 +29,7 @@ final class Island: SKSpriteNode, IGameBackgroundSpritable {
 
 		return island
 	}
-
-//	//используя этот метод острова будут плыть нормально (с верху вниз)
-//		static func populate(at point: CGPoint) -> Island {
-//			let islandImageName = configureName()
-//			let island = Island(imageNamed: islandImageName)
-//
-//			//конфигурируем остров
-//			island.setScale(randomScaleFactor)
-//			island.position = point
-//			island.zPosition = 1
-//			island.run(rotateForRandomAngle())
-//			island.run(move(from: island.position))
-//
-//			return island
-//	}
+	
 	//Метод - рандомное измение островов (имени выводимого острова)
 	fileprivate static func configureName() -> String {
 		let distribution = GKRandomDistribution(lowestValue: 1, highestValue: 4)

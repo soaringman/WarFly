@@ -77,8 +77,8 @@ class GameScene: SKScene {
 	fileprivate func spawnEnemiesOfSpiral() {
 		// Поработает со вражескими обьектами
 		//СОздадим атлас текстур для нашего врага 1 и 2
-		let enemyTextureAtlas1 = SKTextureAtlas(named: "Enemy_1")
-		let enemyTextureAtlas2 = SKTextureAtlas(named: "Enemy_2")
+		let enemyTextureAtlas1 = Assets.shared.enemy_1Altas
+		let enemyTextureAtlas2 = Assets.shared.enemy_2Altas
 		//сделавем предзагрузку атласа
 		SKTextureAtlas.preloadTextureAtlases([enemyTextureAtlas1, enemyTextureAtlas2]) { [unowned self] in
 

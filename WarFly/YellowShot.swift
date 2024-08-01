@@ -10,7 +10,7 @@ import SpriteKit
 class YellowShot: Shot {
 
 	init() {
-		let currentTexputeAtlas = SKTextureAtlas(named: "YellowAmmo")
+		let currentTexputeAtlas = Assets.shared.yellowAmmoAltas
 		super.init(textureAtlas: currentTexputeAtlas)
 	}
 

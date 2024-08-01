@@ -40,7 +40,9 @@ class PlayerPlane: SKSpriteNode {
 		//и мы можем использовать покадровую анимацию с помощью SKTextureAtlas
 		//И когда мы используем тукстуры для разных спрайтов то храниться всего одна копия тексутры
 		
-		let playerPlaneTexture = SKTexture(imageNamed: "airplane_3ver2_13.png")
+		let currentAtlas = Assets.shared.playerPlaneAltas
+		let playerPlaneTexture = currentAtlas.textureNamed("airplane_3ver2_13.png")
+//		SKTexture(imageNamed: "airplane_3ver2_13.png")
 		let playerPlane = PlayerPlane(texture: playerPlaneTexture)
 		playerPlane.setScale(0.5)
 		playerPlane.position = point

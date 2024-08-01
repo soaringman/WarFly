@@ -23,7 +23,7 @@ class Shot: SKSpriteNode {
 		super.init(texture: currentTexture,
 				   color: .clear,
 				   size: initialSize)
-		self.setScale(0.7)
+		self.setScale(0.3)
 		self.name = "shotSprite"
 		self.zPosition = 30
 	}

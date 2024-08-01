@@ -20,6 +20,7 @@
 		F07E396B2C5AA90500E5D9B6 /* YellowAmmo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F07E396A2C5AA90500E5D9B6 /* YellowAmmo.atlas */; };
 		F07E396D2C5AAB6200E5D9B6 /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07E396C2C5AAB6200E5D9B6 /* Shot.swift */; };
 		F07E396F2C5AAF3600E5D9B6 /* YellowShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07E396E2C5AAF3600E5D9B6 /* YellowShot.swift */; };
+		F0897A872C5B96A800131FEF /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0897A862C5B96A700131FEF /* Assets.swift */; };
 		F08A19722C34269500432FFA /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08A19712C34269500432FFA /* Background.swift */; };
 		F08A19742C3593EA00432FFA /* Island.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08A19732C3593EA00432FFA /* Island.swift */; };
 		F0B26FD02C4968CB003DA27A /* PowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B26FCF2C4968CB003DA27A /* PowerUp.swift */; };
@@ -47,6 +48,7 @@
 		F07E396A2C5AA90500E5D9B6 /* YellowAmmo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = YellowAmmo.atlas; sourceTree = "<group>"; };
 		F07E396C2C5AAB6200E5D9B6 /* Shot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
 		F07E396E2C5AAF3600E5D9B6 /* YellowShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowShot.swift; sourceTree = "<group>"; };
+		F0897A862C5B96A700131FEF /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		F08A19712C34269500432FFA /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		F08A19732C3593EA00432FFA /* Island.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Island.swift; sourceTree = "<group>"; };
 		F0B26FCF2C4968CB003DA27A /* PowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUp.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			children = (
 				F05448E42C2DAFA4003950CD /* AppDelegate.swift */,
 				F05448EA2C2DAFA4003950CD /* GameScene.swift */,
+				F0897A862C5B96A700131FEF /* Assets.swift */,
 				F0B26FCF2C4968CB003DA27A /* PowerUp.swift */,
 				F0E12AF72C591E2A00854D91 /* BluePowerUp.swift */,
 				F0E12AF92C591E7500854D91 /* GreenPowerUp.swift */,
@@ -201,6 +204,7 @@
 				F0E12AF82C591E2A00854D91 /* BluePowerUp.swift in Sources */,
 				F0E047212C36F57900C123AD /* Cloud.swift in Sources */,
 				F05448ED2C2DAFA4003950CD /* GameViewController.swift in Sources */,
+				F0897A872C5B96A800131FEF /* Assets.swift in Sources */,
 				F05448E52C2DAFA4003950CD /* AppDelegate.swift in Sources */,
 				F02B94132C4FFFC600D3A80E /* Enemy.swift in Sources */,
 				F08A19742C3593EA00432FFA /* Island.swift in Sources */,
