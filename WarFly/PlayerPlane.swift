@@ -50,6 +50,31 @@ class PlayerPlane: SKSpriteNode {
 
 		//Доп задание - можно с помощью диапазона задать - что бы какие то облака пролетали над самолетом,
 		//а какие то под самолетом
+
+		//создадим физическое тело (это совй ство позволит нашим обьектам сталкиваться)
+		//сюда мы присвоим битовую маску
+		playerPlane.physicsBody = SKPhysicsBody(
+			texture: playerPlaneTexture,
+			alphaThreshold: 0.5,
+			size: playerPlane.size
+		)
+
+		//добавим допольнительные физические параметры
+		
+		//дополнительно про свойста, которые можно добавить нашим обектам,
+		//что бы добавить им реалистичности можно почитать в документации
+		//про "physicsBody"
+
+		//параметр dynamic говорит о том что наш обект при попадении в него каких
+		//либо других обьектов не будет двигатся (как бы будет стеной)
+		playerPlane.physicsBody?.isDynamic = false
+		//так же зададим битовую маску нашему самолету
+		playerPlane.physicsBody?.categoryBitMask = BitMaskKategory.player
+		//теперь укажем битовые маски обьектов с которыми мы можем сталкиваться
+		playerPlane.physicsBody?.collisionBitMask = BitMaskKategory.enemy | BitMaskKategory.powerUp
+		//теперь пропишем какие столновения нам нужно будет регистрировать
+		playerPlane.physicsBody?.contactTestBitMask = BitMaskKategory.enemy | BitMaskKategory.powerUp
+
 		return playerPlane
 	}
 

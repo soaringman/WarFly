@@ -18,6 +18,20 @@ class Enemy: SKSpriteNode {
 		self.yScale = -0.5
 		self.zPosition = 20
 		self.name = "sprite"
+
+		//зазадим физические саойства для врага
+		self.physicsBody = SKPhysicsBody(
+			texture: texture,
+			alphaThreshold: 0.5,
+			size: self.size
+		)
+
+		//(более развернутое описание можно прочесть
+		//в обноименных свойствах в классе PlayerPlane
+		self.physicsBody?.isDynamic = true
+		self.physicsBody?.categoryBitMask = BitMaskKategory.enemy
+		self.physicsBody?.collisionBitMask = BitMaskKategory.player | BitMaskKategory.shot
+		self.physicsBody?.contactTestBitMask = BitMaskKategory.player | BitMaskKategory.shot
 	}
 	//Метод - позволяющий научить наших врагов летать по спирали
 	func flyInSpiral() {

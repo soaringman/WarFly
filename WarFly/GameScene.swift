@@ -21,6 +21,13 @@ class GameScene: SKScene {
 
     override func didMove(to view: SKView) {
 
+		//пропишем физические свойства и здесь
+		//пропишем делегата но для этого нужно наш класс
+		//GameScene подписать под отот протокол
+		physicsWorld.contactDelegate = self
+		//гравитацию
+		physicsWorld.gravity = CGVector.zero
+
 		configureStartScene()
 		spawnClouds()
 		spawnIsland()
@@ -208,5 +215,16 @@ class GameScene: SKScene {
 	//экрану
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 		playerFire()
+	}
+}
+
+extension GameScene: SKPhysicsContactDelegate {
+
+	func didBegin(_ contact: SKPhysicsContact) {
+		print("contact detected")
+	}
+
+	func didEnd(_ contact: SKPhysicsContact) {
+		print("contact ended")
 	}
 }

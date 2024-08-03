@@ -26,6 +26,20 @@ class Shot: SKSpriteNode {
 		self.setScale(0.3)
 		self.name = "shotSprite"
 		self.zPosition = 30
+
+		//зазадим физические саойства для выстрела
+		self.physicsBody = SKPhysicsBody(
+			texture: currentTexture,
+			alphaThreshold: 0.5,
+			size: self.size
+		)
+
+		//(более развернутое описание можно прочесть
+		//в обноименных свойствах в классе PlayerPlane
+		self.physicsBody?.isDynamic = false
+		self.physicsBody?.categoryBitMask = BitMaskKategory.shot
+		self.physicsBody?.collisionBitMask = BitMaskKategory.enemy
+		self.physicsBody?.contactTestBitMask = BitMaskKategory.enemy
 	}
 
 	func startMovement() {

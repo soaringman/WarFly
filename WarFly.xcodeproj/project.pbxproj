@@ -28,6 +28,7 @@
 		F0B26FD22C496D69003DA27A /* GreenPowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F0B26FD12C496D69003DA27A /* GreenPowerUp.atlas */; };
 		F0D090092C3BE61D005A2634 /* PlayerPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D090082C3BE61D005A2634 /* PlayerPlane.swift */; };
 		F0D0900B2C3BEA22005A2634 /* PlayerPlane.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F0D0900A2C3BEA22005A2634 /* PlayerPlane.atlas */; };
+		F0D0AF3E2C5E3413007C6A2D /* BitMaskKategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D0AF3D2C5E3413007C6A2D /* BitMaskKategory.swift */; };
 		F0E047212C36F57900C123AD /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E047202C36F57900C123AD /* Cloud.swift */; };
 		F0E12AF62C59168700854D91 /* BluePowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F0E12AF52C59168700854D91 /* BluePowerUp.atlas */; };
 		F0E12AF82C591E2A00854D91 /* BluePowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E12AF72C591E2A00854D91 /* BluePowerUp.swift */; };
@@ -57,6 +58,7 @@
 		F0B26FD12C496D69003DA27A /* GreenPowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = GreenPowerUp.atlas; sourceTree = "<group>"; };
 		F0D090082C3BE61D005A2634 /* PlayerPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPlane.swift; sourceTree = "<group>"; };
 		F0D0900A2C3BEA22005A2634 /* PlayerPlane.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerPlane.atlas; sourceTree = "<group>"; };
+		F0D0AF3D2C5E3413007C6A2D /* BitMaskKategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitMaskKategory.swift; sourceTree = "<group>"; };
 		F0E047202C36F57900C123AD /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		F0E12AF52C59168700854D91 /* BluePowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BluePowerUp.atlas; sourceTree = "<group>"; };
 		F0E12AF72C591E2A00854D91 /* BluePowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluePowerUp.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				F0E047202C36F57900C123AD /* Cloud.swift */,
 				F0584A032C3FECDA007E1BE0 /* IGameBackgroundSpritable+Exstension.swift */,
 				F05448EC2C2DAFA4003950CD /* GameViewController.swift */,
+				F0D0AF3D2C5E3413007C6A2D /* BitMaskKategory.swift */,
 				F05448EE2C2DAFA4003950CD /* Main.storyboard */,
 				F05448F12C2DAFA5003950CD /* Assets.xcassets */,
 				F08A19712C34269500432FFA /* Background.swift */,
@@ -208,6 +211,7 @@
 				F0E047212C36F57900C123AD /* Cloud.swift in Sources */,
 				F05448ED2C2DAFA4003950CD /* GameViewController.swift in Sources */,
 				F0897A872C5B96A800131FEF /* Assets.swift in Sources */,
+				F0D0AF3E2C5E3413007C6A2D /* BitMaskKategory.swift in Sources */,
 				F05448E52C2DAFA4003950CD /* AppDelegate.swift in Sources */,
 				F02B94132C4FFFC600D3A80E /* Enemy.swift in Sources */,
 				F08A19742C3593EA00432FFA /* Island.swift in Sources */,
