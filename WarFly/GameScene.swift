@@ -221,10 +221,26 @@ class GameScene: SKScene {
 extension GameScene: SKPhysicsContactDelegate {
 
 	func didBegin(_ contact: SKPhysicsContact) {
-		print("contact detected")
+		let bodyA = contact.bodyA.categoryBitMask
+		let bodyB = contact.bodyB.categoryBitMask
+		let player = BitMaskKategory.player
+		let enemy = BitMaskKategory.enemy
+		let shot = BitMaskKategory.shot
+		let powerUp = BitMaskKategory.powerUp
+
+		//напишем сравнение битовых масок и действие после их сравнениея
+		//так как у нас в случайном порядке может быть присвоено и телоА и телоВ
+		// и самолету и врагу то нужно прописывать два условия вместо одно одного
+		if bodyA == player && bodyB == enemy || bodyA == enemy && bodyB == player {
+			print("enemy vs player")
+		} else if bodyA == player && bodyB == powerUp || bodyA == powerUp && bodyB == player {
+			print("powerUp vs player")
+		} else if bodyA == enemy && bodyB == shot || bodyA == shot && bodyB == enemy {
+			print("shot vs player")
+		}
 	}
 
 	func didEnd(_ contact: SKPhysicsContact) {
-		print("contact ended")
+
 	}
 }
