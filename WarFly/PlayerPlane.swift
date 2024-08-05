@@ -42,7 +42,6 @@ class PlayerPlane: SKSpriteNode {
 		
 		let currentAtlas = Assets.shared.playerPlaneAltas
 		let playerPlaneTexture = currentAtlas.textureNamed("airplane_3ver2_13.png")
-//		SKTexture(imageNamed: "airplane_3ver2_13.png")
 		let playerPlane = PlayerPlane(texture: playerPlaneTexture)
 		playerPlane.setScale(0.5)
 		playerPlane.position = point
@@ -52,7 +51,53 @@ class PlayerPlane: SKSpriteNode {
 		//а какие то под самолетом
 
 		//создадим физическое тело (это совй ство позволит нашим обьектам сталкиваться)
+		
+		/*
+		 
+		 создание физического тела путем добалвения пути посредством ключевых точек
+		//Это координаты нашей артинки по х и у
+		let offsetX = playerPlane.frame.size.width * playerPlane.anchorPoint.x;
+		let offsetY = playerPlane.frame.size.height * playerPlane.anchorPoint.y;
+
+		//Дальше нужен путь по которому мы будем отрисовывать нашу картинку
+
+		//создаем path
+		let path = CGMutablePath()
+
+		//дальше передвигаемся в первую точку нашей фигуры
+		path.move(to: CGPoint(x: 47 - offsetX, y: 47 - offsetX))
+
+		// добавляем все наши линии
+		path.addLine(to: CGPoint(x: 64 - offsetX, y: 85 - offsetY))
+		path.addLine(to: CGPoint(x: 72 - offsetX, y: 99 - offsetY))
+		path.addLine(to: CGPoint(x: 78 - offsetX, y: 98 - offsetY))
+		path.addLine(to: CGPoint(x: 84 - offsetX, y: 84 - offsetY))
+		path.addLine(to: CGPoint(x: 141 - offsetX, y: 75 - offsetY))
+		path.addLine(to: CGPoint(x: 141 - offsetX, y: 66 - offsetY))
+		path.addLine(to: CGPoint(x: 85 - offsetX, y: 57 - offsetY))
+		path.addLine(to: CGPoint(x: 77 - offsetX, y: 24 - offsetY))
+		path.addLine(to: CGPoint(x: 94 - offsetX, y: 19 - offsetY))
+		path.addLine(to: CGPoint(x: 94 - offsetX, y: 10 - offsetY))
+		path.addLine(to: CGPoint(x: 79 - offsetX, y: 8 - offsetY))
+		path.addLine(to: CGPoint(x: 75 - offsetX, y: 6 - offsetY))
+		path.addLine(to: CGPoint(x: 72 - offsetX, y: 7 - offsetY))
+		path.addLine(to: CGPoint(x: 56 - offsetX, y: 10 - offsetY))
+		path.addLine(to: CGPoint(x: 56 - offsetX, y: 19 - offsetY))
+		path.addLine(to: CGPoint(x: 69 - offsetX, y: 23 - offsetY))
+		path.addLine(to: CGPoint(x: 67 - offsetX, y: 56 - offsetY))
+		path.addLine(to: CGPoint(x: 8 - offsetX, y: 66 - offsetY))
+		path.addLine(to: CGPoint(x: 8 - offsetX, y: 76 - offsetY))
+
+		//теперь нужно закрыть нашу траэкторию
+		path.closeSubpath()
+
+		//теперь присвоим нашему физическому телу созданную выше траэкторию
+		playerPlane.physicsBody = SKPhysicsBody(polygonFrom: path)
+		
+		*/
+
 		//сюда мы присвоим битовую маску
+
 		playerPlane.physicsBody = SKPhysicsBody(
 			texture: playerPlaneTexture,
 			alphaThreshold: 0.5,
@@ -76,6 +121,12 @@ class PlayerPlane: SKSpriteNode {
 		playerPlane.physicsBody?.contactTestBitMask = BitMaskKategory.enemy | BitMaskKategory.powerUp
 
 		return playerPlane
+
+		/* ДОПОЛНИТЕЛЬНЫЙ МАТЕРИАЛ
+		Как отрисовать физическое тело определенной формы:
+		 Соотвествующий материал добавил в Обсидиан за 05/07/2024
+		*/
+
 	}
 
 	// Метод - задающий поведение самолета по оси Х
