@@ -53,7 +53,7 @@ class PlayerPlane: SKSpriteNode {
 		//создадим физическое тело (это совй ство позволит нашим обьектам сталкиваться)
 		
 		/*
-		 
+
 		 создание физического тела путем добалвения пути посредством ключевых точек
 		//Это координаты нашей артинки по х и у
 		let offsetX = playerPlane.frame.size.width * playerPlane.anchorPoint.x;
@@ -114,11 +114,11 @@ class PlayerPlane: SKSpriteNode {
 		//либо других обьектов не будет двигатся (как бы будет стеной)
 		playerPlane.physicsBody?.isDynamic = false
 		//так же зададим битовую маску нашему самолету
-		playerPlane.physicsBody?.categoryBitMask = BitMaskKategory.player
+		playerPlane.physicsBody?.categoryBitMask = BitMaskKategory.player.rawValue
 		//теперь укажем битовые маски обьектов с которыми мы можем сталкиваться
-		playerPlane.physicsBody?.collisionBitMask = BitMaskKategory.enemy | BitMaskKategory.powerUp
+		playerPlane.physicsBody?.collisionBitMask = BitMaskKategory.enemy.rawValue | BitMaskKategory.powerUp.rawValue
 		//теперь пропишем какие столновения нам нужно будет регистрировать
-		playerPlane.physicsBody?.contactTestBitMask = BitMaskKategory.enemy | BitMaskKategory.powerUp
+		playerPlane.physicsBody?.contactTestBitMask = BitMaskKategory.enemy.rawValue | BitMaskKategory.powerUp.rawValue
 
 		return playerPlane
 

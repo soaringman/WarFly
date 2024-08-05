@@ -35,9 +35,9 @@ class PowerUp: SKSpriteNode {
 		//(более развернутое описание можно прочесть
 		//в обноименных свойствах в классе PlayerPlane
 		self.physicsBody?.isDynamic = true
-		self.physicsBody?.categoryBitMask = BitMaskKategory.powerUp
-		self.physicsBody?.collisionBitMask = BitMaskKategory.player
-		self.physicsBody?.contactTestBitMask = BitMaskKategory.player
+		self.physicsBody?.categoryBitMask = BitMaskKategory.powerUp.rawValue
+		self.physicsBody?.collisionBitMask = BitMaskKategory.player.rawValue
+		self.physicsBody?.contactTestBitMask = BitMaskKategory.player.rawValue
 
 	}
 

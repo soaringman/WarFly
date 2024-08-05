@@ -37,9 +37,9 @@ class Shot: SKSpriteNode {
 		//(более развернутое описание можно прочесть
 		//в обноименных свойствах в классе PlayerPlane
 		self.physicsBody?.isDynamic = false
-		self.physicsBody?.categoryBitMask = BitMaskKategory.shot
-		self.physicsBody?.collisionBitMask = BitMaskKategory.enemy
-		self.physicsBody?.contactTestBitMask = BitMaskKategory.enemy
+		self.physicsBody?.categoryBitMask = BitMaskKategory.shot.rawValue
+		self.physicsBody?.collisionBitMask = BitMaskKategory.enemy.rawValue
+		self.physicsBody?.contactTestBitMask = BitMaskKategory.enemy.rawValue
 	}
 
 	func startMovement() {
