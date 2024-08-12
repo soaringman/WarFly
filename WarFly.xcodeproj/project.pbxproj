@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F007DDD42C678CA1003BC34A /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F007DDD32C678CA1003BC34A /* ButtonNode.swift */; };
 		F02B94132C4FFFC600D3A80E /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02B94122C4FFFC600D3A80E /* Enemy.swift */; };
 		F02B94152C5000D800D3A80E /* Enemy_1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F02B94142C5000D800D3A80E /* Enemy_1.atlas */; };
 		F02B94172C51473900D3A80E /* Enemy_2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F02B94162C51473900D3A80E /* Enemy_2.atlas */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F007DDD32C678CA1003BC34A /* ButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
 		F02B94122C4FFFC600D3A80E /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		F02B94142C5000D800D3A80E /* Enemy_1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy_1.atlas; sourceTree = "<group>"; };
 		F02B94162C51473900D3A80E /* Enemy_2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy_2.atlas; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 		F04CF2B82C65589D00760F3E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F007DDD32C678CA1003BC34A /* ButtonNode.swift */,
 				F0D090082C3BE61D005A2634 /* PlayerPlane.swift */,
 				F04CF2B32C6552F400760F3E /* HUD.swift */,
 				F02B94122C4FFFC600D3A80E /* Enemy.swift */,
@@ -271,6 +274,7 @@
 				F04CF2B42C6552F400760F3E /* HUD.swift in Sources */,
 				F07E396D2C5AAB6200E5D9B6 /* Shot.swift in Sources */,
 				F08A19722C34269500432FFA /* Background.swift in Sources */,
+				F007DDD42C678CA1003BC34A /* ButtonNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

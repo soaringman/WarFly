@@ -10,6 +10,7 @@ import SpriteKit
 //класс для предзагрузки всех наших атласов
 class Assets {
 	static let shared = Assets()
+	var isLoaded = false 
 	let playerPlaneAltas = SKTextureAtlas(named: "PlayerPlane")
 	let yellowAmmoAltas = SKTextureAtlas(named: "YellowAmmo")
 	let enemy_1Altas = SKTextureAtlas(named: "Enemy_1")

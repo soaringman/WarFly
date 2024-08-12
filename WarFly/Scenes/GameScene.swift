@@ -42,6 +42,8 @@ class GameScene: SKScene {
     }
 
 	fileprivate func CreateHUD() {
+		//добавим интерфейс на экран
+		addChild(hud)
 		hud.configureUI(screenSize: currentScreenSize)
 	}
 
