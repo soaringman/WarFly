@@ -216,8 +216,27 @@ class GameScene: SKScene {
 
 	//используем метод  TouchesBegan - который нам позволит делать что то когда будет зафиксировано прикосновение к
 	//экрану
+
+	//ловим действие
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		playerFire()
+		//ловим первое касание на текущем экране (место на которое мы нажали)
+		let location = touches.first!.location(in: self)
+		//метод addPoint позволяет получить обьект под той областью на которую мы нажали
+		//(предположительно наша кнопка)
+		let node = self.atPoint(location)
+		//теперь проверяем что под этой областью надодиться нода "runButton"
+		if node.name == "pause" {
+			//то осуществить переход на другую сцену crossFade (один из вариантов перехода)
+			let transition = SKTransition.doorway(withDuration: 1.0)
+			//теперь создадим ту цену на которую хотим перейти с размерами нашей текущей сцены
+			let pauseScene = PauseScene(size: self.size)
+			//масштаб сцены
+			pauseScene.scaleMode = .aspectFill
+			//осуществим сам переход с тем видом (transition) который мы ранее выбрали
+			self.scene!.view?.presentScene(pauseScene, transition: transition)
+		} else {
+			playerFire()
+		}
 	}
 }
 

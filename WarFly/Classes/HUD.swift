@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-class HUD: SKScene {
+class HUD: SKNode {
 
 	//создаем элементы для пользовательского интерфейса
 	let scoreBackground = SKSpriteNode(imageNamed: "scores")
@@ -48,10 +48,15 @@ class HUD: SKScene {
 
 		//теперь добавим нашу кнопку "меню"
 		menuButton.position = CGPoint(x: 20, y: 20)
+		
 		//так жа сместим наш анкор поинт
 		//(обучно по умолчанию он находиться в центре фигуры)
 		menuButton.anchorPoint = CGPoint(x: 0.0, y: 0.0)
 		menuButton.zPosition = 100
+		
+		//добавим кнопку pause
+		menuButton.name = "pause"
+
 		addChild(menuButton)
 
 		//и теперь добавим "жизни" для самолета

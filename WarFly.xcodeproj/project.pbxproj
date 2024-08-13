@@ -19,6 +19,7 @@
 		F05448F22C2DAFA5003950CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F05448F12C2DAFA5003950CD /* Assets.xcassets */; };
 		F05448F52C2DAFA5003950CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F05448F32C2DAFA5003950CD /* LaunchScreen.storyboard */; };
 		F0584A042C3FECDA007E1BE0 /* IGameBackgroundSpritable+Exstension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0584A032C3FECDA007E1BE0 /* IGameBackgroundSpritable+Exstension.swift */; };
+		F07D3F422C6BB1A8001EA1B0 /* PauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D3F412C6BB1A8001EA1B0 /* PauseScene.swift */; };
 		F07E396B2C5AA90500E5D9B6 /* YellowAmmo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F07E396A2C5AA90500E5D9B6 /* YellowAmmo.atlas */; };
 		F07E396D2C5AAB6200E5D9B6 /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07E396C2C5AAB6200E5D9B6 /* Shot.swift */; };
 		F07E396F2C5AAF3600E5D9B6 /* YellowShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07E396E2C5AAF3600E5D9B6 /* YellowShot.swift */; };
@@ -51,6 +52,7 @@
 		F05448F12C2DAFA5003950CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F05448F42C2DAFA5003950CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0584A032C3FECDA007E1BE0 /* IGameBackgroundSpritable+Exstension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IGameBackgroundSpritable+Exstension.swift"; sourceTree = "<group>"; };
+		F07D3F412C6BB1A8001EA1B0 /* PauseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScene.swift; sourceTree = "<group>"; };
 		F07E396A2C5AA90500E5D9B6 /* YellowAmmo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = YellowAmmo.atlas; sourceTree = "<group>"; };
 		F07E396C2C5AAB6200E5D9B6 /* Shot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
 		F07E396E2C5AAF3600E5D9B6 /* YellowShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowShot.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				F0897A882C5BCCD800131FEF /* MenuScene.swift */,
+				F07D3F412C6BB1A8001EA1B0 /* PauseScene.swift */,
 				F05448EA2C2DAFA4003950CD /* GameScene.swift */,
 			);
 			path = Scenes;
@@ -271,6 +274,7 @@
 				F08A19742C3593EA00432FFA /* Island.swift in Sources */,
 				F0B26FD02C4968CB003DA27A /* PowerUp.swift in Sources */,
 				F0897A892C5BCCD800131FEF /* MenuScene.swift in Sources */,
+				F07D3F422C6BB1A8001EA1B0 /* PauseScene.swift in Sources */,
 				F04CF2B42C6552F400760F3E /* HUD.swift in Sources */,
 				F07E396D2C5AAB6200E5D9B6 /* Shot.swift in Sources */,
 				F08A19722C34269500432FFA /* Background.swift in Sources */,
