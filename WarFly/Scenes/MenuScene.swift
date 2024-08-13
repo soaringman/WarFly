@@ -18,26 +18,32 @@ class MenuScene: SKScene {
 		}
 
 		//добавим фон
-
 		self.backgroundColor = SKColor(red: 0.15, green: 0.15, blue: 0.3, alpha: 1.0)
 		//добавим хедер
 		let header = SKSpriteNode(imageNamed: "header1")
 		
 		//создадим кнопку используя два нода (фон и ярлык)
-		
 		header.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 150)
 		self.addChild(header)
 
-		let play = ButtonNode(
-			titled: "play",
-			backGroundName: "button_background"
-		)
-		play.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
-		play.name = "play"
-		
-		// имя ярлыка так же play
-		play.label.name = "play"
-		addChild(play)
+		//перепишем наши кнопки так что бы не повторяться (DRY - Don't repeat your self)
+		let titles = ["play", "options", "best"]
+
+		for (index, title) in titles.enumerated() {
+
+			//добавим кнопку play путем добавления двух нодов (ярлыка и фона)
+			let button = ButtonNode(
+				titled: title,
+				backGroundName: "button_background"
+			)
+			
+			button.position = CGPoint(x: self.frame.midX, y: self.frame.midY - CGFloat(100 * index))
+			button.name = title
+
+			// имя ярлыка так же play (это сделано для того что бы если я нажимаю на ярлык - действие тоже срабатывает)
+			button.label.name = title
+			addChild(button)
+		}
 	}
 	
 	//ловим действие
