@@ -10,9 +10,8 @@ import GameplayKit
 
 class GameScene: SKScene {
 
-//	//Создаем менеджера - для считывания показаний акселерометра
-//	let motionManager = CMMotionManager()
-//	var xAcceleration: CGFloat = 0
+	//создадим наш единсвенный экземпляр SceneManager
+	let sceneManager = SceneManager.shared
 
 	//создаем наш самолет (если его нет то приложение должно упасть)
 	fileprivate var player: PlayerPlane!
@@ -25,10 +24,19 @@ class GameScene: SKScene {
 
     override func didMove(to view: SKView) {
 
+		//напишем проверку: если gameScene равна нил, то мы просто выходим из метода didMove, если равно нил
+		//то инициализируем все методы которые подготавливают обьекты нашей игры
+		guard sceneManager.gameScene == nil else { return }
+
+		//сохраним нашу сцену в наш SceneManager
+		sceneManager.gameScene = self
+
+
 		//пропишем физические свойства и здесь
 		//пропишем делегата но для этого нужно наш класс
 		//GameScene подписать под отот протокол
 		physicsWorld.contactDelegate = self
+
 		//гравитацию
 		physicsWorld.gravity = CGVector.zero
 
@@ -219,19 +227,26 @@ class GameScene: SKScene {
 
 	//ловим действие
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+		
 		//ловим первое касание на текущем экране (место на которое мы нажали)
 		let location = touches.first!.location(in: self)
+		
 		//метод addPoint позволяет получить обьект под той областью на которую мы нажали
 		//(предположительно наша кнопка)
 		let node = self.atPoint(location)
+		
 		//теперь проверяем что под этой областью надодиться нода "runButton"
 		if node.name == "pause" {
+			
 			//то осуществить переход на другую сцену crossFade (один из вариантов перехода)
 			let transition = SKTransition.doorway(withDuration: 1.0)
+			
 			//теперь создадим ту цену на которую хотим перейти с размерами нашей текущей сцены
 			let pauseScene = PauseScene(size: self.size)
+			
 			//масштаб сцены
 			pauseScene.scaleMode = .aspectFill
+			
 			//осуществим сам переход с тем видом (transition) который мы ранее выбрали
 			self.scene!.view?.presentScene(pauseScene, transition: transition)
 		} else {

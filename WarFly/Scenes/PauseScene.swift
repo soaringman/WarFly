@@ -9,6 +9,12 @@ import SpriteKit
 
 class PauseScene: SKScene {
 
+	//так же зададим сдесь константу sceneManager, к который мы будем обращаться в методе touchesBegan, resume,
+
+	//!!!можно дописать фукционал: и проверять если у нас запомненная сцена,
+	//если нет то данная кропка срабатывать не будет!!!
+	let sceneManager = SceneManager.shared
+
 	override func didMove(to view: SKView) {
 
 		//добавим фон
@@ -40,22 +46,29 @@ class PauseScene: SKScene {
 		}
 	}
 
-	//ловим действие
+	//если не понятно смотри подробные комментарии в GameScene одноименном методе
+
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		//ловим первое касание на текущем экране (место на которое мы нажали)
+
 		let location = touches.first!.location(in: self)
-		//метод addPoint позволяет получить обьект под той областью на которую мы нажали
-		//(предположительно наша кнопка)
 		let node = self.atPoint(location)
-		//теперь проверяем что под этой областью надодиться нода "runButton"
+
 		if node.name == "restart" {
-			//то осуществить переход на другую сцену crossFade (один из вариантов перехода)
+
+			//когда мы перезапускаем иггру нам так же нужно очистить нашу gameScene,
+			//для последующей записи туда новой gameScene и правильной отработки проверки в GameScene строка 29
+			sceneManager.gameScene = nil
 			let transition = SKTransition.crossFade(withDuration: 1.0)
-			//теперь создадим ту цену на которую хотим перейти с размерами нашей текущей сцены
 			let gameScene = GameScene(size: self.size)
-			//масштаб сцены
 			gameScene.scaleMode = .aspectFill
-			//осуществим сам переход с тем видом (transition) который мы ранее выбрали
+			self.scene!.view?.presentScene(gameScene, transition: transition)
+		} else if node.name == "resume" {
+
+			let transition = SKTransition.crossFade(withDuration: 1.0)
+			
+			//напишем проверку так как наша сцена является опциональной
+			guard let gameScene = sceneManager.gameScene else { return }
+			gameScene.scaleMode = .aspectFill
 			self.scene!.view?.presentScene(gameScene, transition: transition)
 		}
 	}

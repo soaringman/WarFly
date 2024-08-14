@@ -23,6 +23,7 @@
 		F07E396B2C5AA90500E5D9B6 /* YellowAmmo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F07E396A2C5AA90500E5D9B6 /* YellowAmmo.atlas */; };
 		F07E396D2C5AAB6200E5D9B6 /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07E396C2C5AAB6200E5D9B6 /* Shot.swift */; };
 		F07E396F2C5AAF3600E5D9B6 /* YellowShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07E396E2C5AAF3600E5D9B6 /* YellowShot.swift */; };
+		F08914BC2C6CA33D00C4BAF7 /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08914BB2C6CA33D00C4BAF7 /* SceneManager.swift */; };
 		F0897A872C5B96A800131FEF /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0897A862C5B96A700131FEF /* Assets.swift */; };
 		F0897A892C5BCCD800131FEF /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0897A882C5BCCD800131FEF /* MenuScene.swift */; };
 		F08A19722C34269500432FFA /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08A19712C34269500432FFA /* Background.swift */; };
@@ -56,6 +57,7 @@
 		F07E396A2C5AA90500E5D9B6 /* YellowAmmo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = YellowAmmo.atlas; sourceTree = "<group>"; };
 		F07E396C2C5AAB6200E5D9B6 /* Shot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
 		F07E396E2C5AAF3600E5D9B6 /* YellowShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowShot.swift; sourceTree = "<group>"; };
+		F08914BB2C6CA33D00C4BAF7 /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		F0897A862C5B96A700131FEF /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		F0897A882C5BCCD800131FEF /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		F08A19712C34269500432FFA /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 		F04CF2B92C6558D800760F3E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				F08914BB2C6CA33D00C4BAF7 /* SceneManager.swift */,
 				F0897A862C5B96A700131FEF /* Assets.swift */,
 				F0D0AF3D2C5E3413007C6A2D /* BitMaskKategory.swift */,
 			);
@@ -269,6 +272,7 @@
 				F05448ED2C2DAFA4003950CD /* GameViewController.swift in Sources */,
 				F0897A872C5B96A800131FEF /* Assets.swift in Sources */,
 				F0D0AF3E2C5E3413007C6A2D /* BitMaskKategory.swift in Sources */,
+				F08914BC2C6CA33D00C4BAF7 /* SceneManager.swift in Sources */,
 				F05448E52C2DAFA4003950CD /* AppDelegate.swift in Sources */,
 				F02B94132C4FFFC600D3A80E /* Enemy.swift in Sources */,
 				F08A19742C3593EA00432FFA /* Island.swift in Sources */,
