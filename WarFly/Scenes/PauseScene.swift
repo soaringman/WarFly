@@ -46,6 +46,17 @@ class PauseScene: SKScene {
 		}
 	}
 
+	// в этом методе мы исправляем то что при снятии с паузы у нас не меняется
+	// флаг ipPaused на true и делаем это тут, предварительно проверяем что наша
+	//сцена сохранена в нашем сингл тоне gameScene
+	override func update(_ currentTime: TimeInterval) {
+		if let gameScene = sceneManager.gameScene {
+			if !gameScene.isPaused {
+				gameScene.isPaused = true
+			}
+		}
+	}
+
 	//если не понятно смотри подробные комментарии в GameScene одноименном методе
 
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -56,7 +67,7 @@ class PauseScene: SKScene {
 		if node.name == "restart" {
 
 			//когда мы перезапускаем иггру нам так же нужно очистить нашу gameScene,
-			//для последующей записи туда новой gameScene и правильной отработки проверки в GameScene строка 29
+			//для последующей записи туда новой gameScene и правильной отработки проверки в gameScene строка 29
 			sceneManager.gameScene = nil
 			let transition = SKTransition.crossFade(withDuration: 1.0)
 			let gameScene = GameScene(size: self.size)
