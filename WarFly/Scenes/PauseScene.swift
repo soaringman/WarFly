@@ -7,24 +7,15 @@
 
 import SpriteKit
 
-class PauseScene: SKScene {
-
-	//так же зададим сдесь константу sceneManager, к который мы будем обращаться в методе touchesBegan, resume,
-
-	//!!!можно дописать фукционал: и проверять если у нас запомненная сцена,
-	//если нет то данная кропка срабатывать не будет!!!
-	let sceneManager = SceneManager.shared
+class PauseScene: ParentScene {
 
 	override func didMove(to view: SKView) {
 
 		//добавим фон
-		self.backgroundColor = SKColor(red: 0.15, green: 0.15, blue: 0.3, alpha: 1.0)
-		//добавим хедер
-		let pauseButton = ButtonNode(titled: "pause", backGroundName: "header_background")
+		self.backgroundColor = CustomBackgroundColor
 
-		//создадим кнопку используя два нода (фон и ярлык)
-		pauseButton.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 150)
-		self.addChild(pauseButton)
+		//добавим хедер
+		setHeader(withName: "pause", andBackground: "header_background")
 
 		//перепишем наши кнопки так что бы не повторяться (DRY - Don't repeat your self)
 		let titles = ["restart", "options", "resume"]
@@ -73,10 +64,21 @@ class PauseScene: SKScene {
 			let gameScene = GameScene(size: self.size)
 			gameScene.scaleMode = .aspectFill
 			self.scene!.view?.presentScene(gameScene, transition: transition)
+
+		} else if node.name == "options" {
+
+			let transition = SKTransition.crossFade(withDuration: 1.0)
+			let optionsScene =  OptionsScene(size: self.size)
+
+			//В этом месте мы говорим что обратной сценой (то место куда мы вернемся) для нашей сцены будет
+			//она сама
+			optionsScene.backScene = self
+			optionsScene.scaleMode = .aspectFill
+			self.scene!.view?.presentScene(optionsScene, transition: transition)
+			
 		} else if node.name == "resume" {
 
 			let transition = SKTransition.crossFade(withDuration: 1.0)
-			
 			//напишем проверку так как наша сцена является опциональной
 			guard let gameScene = sceneManager.gameScene else { return }
 			gameScene.scaleMode = .aspectFill

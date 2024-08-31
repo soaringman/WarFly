@@ -13,7 +13,7 @@ class ButtonNode: SKSpriteNode {
 	let label: SKLabelNode = {
 
 		//создадим ярлык
-		let l = SKLabelNode(text: "whatever")
+		let l = SKLabelNode(text: "")
 		l.fontColor = UIColor(
 			red: 219 / 255,
 		    green: 226 / 255,
@@ -28,13 +28,16 @@ class ButtonNode: SKSpriteNode {
 		return l
 	}()
 
-	init(titled title: String, backGroundName: String) {
+	init(titled title: String?, backGroundName: String) {
 
 		let texture =  SKTexture(imageNamed: backGroundName)
 		super .init(texture: texture, color: .clear, size: texture.size())
 
-		//все буквы заглавные
-		label.text = title.uppercased()
+		//напишем извлечение опционала
+		if let title = title {
+			//все буквы заглавные
+			label.text = title.uppercased()
+		}
 		addChild(label)
 	}
 	

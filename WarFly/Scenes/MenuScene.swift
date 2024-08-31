@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-class MenuScene: SKScene {
+class MenuScene: ParentScene {
 	override func didMove(to view: SKView) {
 		
 		//Проверяем - загружены ли атласы
@@ -18,13 +18,10 @@ class MenuScene: SKScene {
 		}
 
 		//добавим фон
-		self.backgroundColor = SKColor(red: 0.15, green: 0.15, blue: 0.3, alpha: 1.0)
+		self.backgroundColor = CustomBackgroundColor
+
 		//добавим хедер
-		let header = SKSpriteNode(imageNamed: "header1")
-		
-		//создадим кнопку используя два нода (фон и ярлык)
-		header.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 150)
-		self.addChild(header)
+		setHeader(withName: nil, andBackground: "header1")
 
 		//перепишем наши кнопки так что бы не повторяться (DRY - Don't repeat your self)
 		let titles = ["play", "options", "best"]
@@ -63,6 +60,22 @@ class MenuScene: SKScene {
 			gameScene.scaleMode = .aspectFill
 			//осуществим сам переход с тем видом (transition) который мы ранее выбрали
 			self.scene!.view?.presentScene(gameScene, transition: transition)
+
+		} else if node.name == "options" {
+
+			let transition = SKTransition.crossFade(withDuration: 1.0)
+			let optionsScene =  OptionsScene(size: self.size)
+			optionsScene.backScene = self
+			optionsScene.scaleMode = .aspectFill
+			self.scene!.view?.presentScene(optionsScene, transition: transition)
+
+		} else if node.name == "best" {
+
+//			let transition = SKTransition.crossFade(withDuration: 1.0)
+//			let optionsScene =  OptionsScene(size: self.size)
+//			bestScene.backScene = self
+//			bestScene.scaleMode = .aspectFill
+//			self.scene!.view?.presentScene(bestScene, transition: transition)
 		}
 	}
 

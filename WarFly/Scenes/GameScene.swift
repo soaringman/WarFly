@@ -8,10 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
-
-	//создадим наш единсвенный экземпляр SceneManager
-	let sceneManager = SceneManager.shared
+class GameScene: ParentScene {
 
 	//создаем наш самолет (если его нет то приложение должно упасть)
 	fileprivate var player: PlayerPlane!
