@@ -17,9 +17,6 @@ class MenuScene: ParentScene {
 			Assets.shared.isLoaded = true
 		}
 
-		//добавим фон
-		self.backgroundColor = CustomBackgroundColor
-
 		//добавим хедер
 		setHeader(withName: nil, andBackground: "header1")
 
@@ -71,11 +68,11 @@ class MenuScene: ParentScene {
 
 		} else if node.name == "best" {
 
-//			let transition = SKTransition.crossFade(withDuration: 1.0)
-//			let optionsScene =  OptionsScene(size: self.size)
-//			bestScene.backScene = self
-//			bestScene.scaleMode = .aspectFill
-//			self.scene!.view?.presentScene(bestScene, transition: transition)
+			let transition = SKTransition.crossFade(withDuration: 1.0)
+			let bestScene =  BestScene(size: self.size)
+			bestScene.backScene = self
+			bestScene.scaleMode = .aspectFill
+			self.scene!.view?.presentScene(bestScene, transition: transition)
 		}
 	}
 

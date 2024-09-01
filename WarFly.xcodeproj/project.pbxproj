@@ -21,6 +21,7 @@
 		F0584A042C3FECDA007E1BE0 /* IGameBackgroundSpritable+Exstension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0584A032C3FECDA007E1BE0 /* IGameBackgroundSpritable+Exstension.swift */; };
 		F06686BF2C6FA66400A07DD5 /* ParentScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06686BE2C6FA66400A07DD5 /* ParentScene.swift */; };
 		F06686C12C6FB07400A07DD5 /* OptionsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06686C02C6FB07400A07DD5 /* OptionsScene.swift */; };
+		F06E5D352C84B2250033D490 /* BestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E5D342C84B2250033D490 /* BestScene.swift */; };
 		F07D3F422C6BB1A8001EA1B0 /* PauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D3F412C6BB1A8001EA1B0 /* PauseScene.swift */; };
 		F07E396B2C5AA90500E5D9B6 /* YellowAmmo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F07E396A2C5AA90500E5D9B6 /* YellowAmmo.atlas */; };
 		F07E396D2C5AAB6200E5D9B6 /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07E396C2C5AAB6200E5D9B6 /* Shot.swift */; };
@@ -57,6 +58,7 @@
 		F0584A032C3FECDA007E1BE0 /* IGameBackgroundSpritable+Exstension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IGameBackgroundSpritable+Exstension.swift"; sourceTree = "<group>"; };
 		F06686BE2C6FA66400A07DD5 /* ParentScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentScene.swift; sourceTree = "<group>"; };
 		F06686C02C6FB07400A07DD5 /* OptionsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsScene.swift; sourceTree = "<group>"; };
+		F06E5D342C84B2250033D490 /* BestScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestScene.swift; sourceTree = "<group>"; };
 		F07D3F412C6BB1A8001EA1B0 /* PauseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScene.swift; sourceTree = "<group>"; };
 		F07E396A2C5AA90500E5D9B6 /* YellowAmmo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = YellowAmmo.atlas; sourceTree = "<group>"; };
 		F07E396C2C5AAB6200E5D9B6 /* Shot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				F07D3F412C6BB1A8001EA1B0 /* PauseScene.swift */,
 				F05448EA2C2DAFA4003950CD /* GameScene.swift */,
 				F06686C02C6FB07400A07DD5 /* OptionsScene.swift */,
+				F06E5D342C84B2250033D490 /* BestScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				F05448E52C2DAFA4003950CD /* AppDelegate.swift in Sources */,
 				F02B94132C4FFFC600D3A80E /* Enemy.swift in Sources */,
 				F08A19742C3593EA00432FFA /* Island.swift in Sources */,
+				F06E5D352C84B2250033D490 /* BestScene.swift in Sources */,
 				F0B26FD02C4968CB003DA27A /* PowerUp.swift in Sources */,
 				F0897A892C5BCCD800131FEF /* MenuScene.swift in Sources */,
 				F06686BF2C6FA66400A07DD5 /* ParentScene.swift in Sources */,

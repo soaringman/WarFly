@@ -11,9 +11,6 @@ class PauseScene: ParentScene {
 
 	override func didMove(to view: SKView) {
 
-		//добавим фон
-		self.backgroundColor = CustomBackgroundColor
-
 		//добавим хедер
 		setHeader(withName: "pause", andBackground: "header_background")
 

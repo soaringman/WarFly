@@ -9,11 +9,7 @@ import SpriteKit
 
 class OptionsScene: ParentScene {
 
-
 	override func didMove(to view: SKView) {
-
-		//добавим фон
-		self.backgroundColor = CustomBackgroundColor
 
 		//добавим хедер
 		setHeader(withName: "options", andBackground: "header_background")

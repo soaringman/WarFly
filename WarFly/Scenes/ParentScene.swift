@@ -26,23 +26,7 @@ class ParentScene: SKScene {
 	//для того что бы вернуться назад зададим для нее переменную
 	var backScene: SKScene?
 
-	//зададим цвет нашего фона (что бы не прописывать его на асех сценах подробно
-	let CustomBackgroundColor = SKColor(
-		red: 0.15,
-		green: 0.15,
-		blue: 0.3,
-		alpha: 1)
-
 	//для примера напишем функцию устновки хедера
-
-
-
-
-
-
-
-	
-
 	func setHeader(
 		withName name: String?,
 		andBackground backgroundName: String
@@ -56,4 +40,18 @@ class ParentScene: SKScene {
 		self.addChild(pauseButton)
 	}
 
+	//зададим цвет нашего фона по умолчанию (что бы не прописывать его на асех сценах)
+	override init(size: CGSize) {
+		super.init(size: size)
+
+		backgroundColor = SKColor(
+			red: 0.15,
+			green: 0.15,
+			blue: 0.3,
+			alpha: 1)
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 }
