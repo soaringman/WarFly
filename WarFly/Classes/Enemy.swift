@@ -30,7 +30,7 @@ class Enemy: SKSpriteNode {
 		//в обноименных свойствах в классе PlayerPlane
 		self.physicsBody?.isDynamic = true
 		self.physicsBody?.categoryBitMask = BitMaskKategory.enemy.rawValue
-		self.physicsBody?.collisionBitMask = BitMaskKategory.player.rawValue | BitMaskKategory.shot.rawValue
+		self.physicsBody?.collisionBitMask = BitMaskKategory.none.rawValue
 		self.physicsBody?.contactTestBitMask = BitMaskKategory.player.rawValue | BitMaskKategory.shot.rawValue
 	}
 	//Метод - позволяющий научить наших врагов летать по спирали

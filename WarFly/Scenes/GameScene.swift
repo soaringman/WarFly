@@ -274,11 +274,46 @@ class GameScene: ParentScene {
 extension GameScene: SKPhysicsContactDelegate {
 
 	func didBegin(_ contact: SKPhysicsContact) {
+		//добавим наш взрыв
+		let explosion = SKEmitterNode(fileNamed: "EnemyExposion")
+		//получим точку в которой у нас соприкасается пуля и наш враг
+		let contactPoint = contact.contactPoint
+		//отрисуем на этом месте наш врызв
+		explosion?.position = contactPoint
+		//выполним анимацию длительностью в одну секунду
+		let waitForExplosionAction = SKAction.wait(forDuration: 1.0)
+		//для того что бы анимация не обрезалась,
+		//будем использовать принудительное удаление взрыва с экрана
+
 		let contactCategory: BitMaskKategory = [contact.bodyA.category, contact.bodyB.category]
 		switch contactCategory {
-		case [.player, .enemy]: print("enemy vs player")
+		
+		case [.enemy, .player]: print("enemy vs player")
+			//если у нашего тела имя sprite
+			if contact.bodyA.node?.name == "sprite" {
+				// то удалить со сцены тело А (нашего врага)
+				contact.bodyA.node?.removeFromParent()
+			} else {
+				// иначе то удалить со сцены тело В (нашего врага)
+				contact.bodyB.node?.removeFromParent()
+			}
+				//добавим наш созданный врыв на сцену
+				addChild(explosion!)
+			//запустим нашу анимацию взрыва и после проигрывания удалим ее со сцены
+			self.run(waitForExplosionAction) { explosion?.removeFromParent() }
+
 		case [.player, .powerUp]: print("powerUp vs player")
+
 		case [.shot, .enemy]: print("shot vs enemy")
+			// то удалить со сцены тело А (нашего врага)
+			contact.bodyA.node?.removeFromParent()
+			// то удалить со сцены тело В (нашего врага)
+			contact.bodyB.node?.removeFromParent()
+			//сделаем тоже самое для пули и врага
+			addChild(explosion!)
+			//запустим нашу анимацию взрыва и после проигрывания удалим ее со сцены
+			self.run(waitForExplosionAction) { explosion?.removeFromParent() }
+
 		default: preconditionFailure("Невозможно поределить категорию столкновения")
 		}
 	}
