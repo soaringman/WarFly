@@ -17,6 +17,33 @@ class GameScene: ParentScene {
 	fileprivate let hud = HUD()
 	fileprivate let currentScreenSize = UIScreen.main.bounds.size
 
+	//теперь поработаем с жизнями нашего самолета
+	fileprivate var lives = 3 {
+		didSet {
+			//добавим наблюдателя для наших жизней, так звездочки которые отвечают за наши жизни находятся
+			//в классе HUD
+			switch lives {
+			case 3:
+				hud.life1.isHidden = false
+				hud.life2.isHidden = false
+				hud.life3.isHidden = false
+			case 2:
+				hud.life1.isHidden = false
+				hud.life2.isHidden = false
+				hud.life3.isHidden = true
+			case 1:
+				hud.life1.isHidden = false
+				hud.life2.isHidden = true
+				hud.life3.isHidden = true
+
+			default:
+				break
+
+			}
+		}
+	}
+
+
 
 
     override func didMove(to view: SKView) {
@@ -280,27 +307,39 @@ extension GameScene: SKPhysicsContactDelegate {
 		let contactPoint = contact.contactPoint
 		//отрисуем на этом месте наш врызв
 		explosion?.position = contactPoint
+		//укажем позицию по оси х
+		explosion?.zPosition = 25
 		//выполним анимацию длительностью в одну секунду
 		let waitForExplosionAction = SKAction.wait(forDuration: 1.0)
 		//для того что бы анимация не обрезалась,
 		//будем использовать принудительное удаление взрыва с экрана
-
 		let contactCategory: BitMaskKategory = [contact.bodyA.category, contact.bodyB.category]
 		switch contactCategory {
 		
 		case [.enemy, .player]: print("enemy vs player")
 			//если у нашего тела имя sprite
 			if contact.bodyA.node?.name == "sprite" {
-				// то удалить со сцены тело А (нашего врага)
-				contact.bodyA.node?.removeFromParent()
+				//проверим что у нашего обьекта нет родителя (так как иногда происходят коллизии)
+				if contact.bodyA.node?.parent != nil {
+					// то удалить со сцены тело А (нашего врага)
+					contact.bodyA.node?.removeFromParent()
+					//и уменьшаем количество жизней на 1
+					self.lives -= 1
+				}
 			} else {
 				// иначе то удалить со сцены тело В (нашего врага)
-				contact.bodyB.node?.removeFromParent()
+					if contact.bodyB.node?.parent != nil {
+						contact.bodyB.node?.removeFromParent()
+						self.lives -= 1
+					}
 			}
 				//добавим наш созданный врыв на сцену
 				addChild(explosion!)
 			//запустим нашу анимацию взрыва и после проигрывания удалим ее со сцены
 			self.run(waitForExplosionAction) { explosion?.removeFromParent() }
+
+			//проверим что с нашими жизнями нешего самолета
+			print(lives)
 
 		case [.player, .powerUp]: print("powerUp vs player")
 
@@ -314,7 +353,7 @@ extension GameScene: SKPhysicsContactDelegate {
 			//запустим нашу анимацию взрыва и после проигрывания удалим ее со сцены
 			self.run(waitForExplosionAction) { explosion?.removeFromParent() }
 
-		default: preconditionFailure("Невозможно поределить категорию столкновения")
+		default: preconditionFailure("Невозможно  категорию столкновения")
 		}
 	}
 
