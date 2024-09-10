@@ -46,8 +46,8 @@ class GameScene: ParentScene {
 
 
 
-    override func didMove(to view: SKView) {
-		
+	override func didMove(to view: SKView) {
+
 		//когда мы обратно возвращаемся на нашу сцену мы должны
 		//снять с паузы нашу игру
 		self.scene?.isPaused = false
@@ -76,7 +76,7 @@ class GameScene: ParentScene {
 		spawnPowerUp()
 		spawnEnemies()
 		CreateHUD()
-    }
+	}
 
 	fileprivate func CreateHUD() {
 		//добавим интерфейс на экран
@@ -102,7 +102,7 @@ class GameScene: ParentScene {
 			//добавим ее на нашу сцену
 			self.addChild(powerUp)
 		}
-		
+
 		//напишем райдомайзер для спавна наших powerUp
 		let randomTimeSpawn = Double(arc4random_uniform(11) + 10)
 		let waitAction = SKAction.wait(forDuration: randomTimeSpawn)
@@ -135,7 +135,7 @@ class GameScene: ParentScene {
 			let arrayOfAtlases = [enemyTextureAtlas1, enemyTextureAtlas2]
 			//теперь создадим переменную с номером атласа
 			let textureEnemyAtlas = arrayOfAtlases[randomnumber]
-			
+
 			//сделаем задежку, что бы все наши враги не родились в одно и то же время
 			let waitEnemyAction = SKAction.wait(forDuration: 1.0)
 			let spawnEnemy = SKAction.run { [unowned self] in
@@ -233,6 +233,25 @@ class GameScene: ParentScene {
 				node.removeFromParent()
 			}
 		}
+
+		//Сделаем проверку для наших "Баночек с апгрейдами" синей и зеленой
+
+		//Метод - который проверяет, если позиция объекта по оси у меньше нуля то такой объект надо удалить со сцены
+		enumerateChildNodes(withName: "greenPowerUp") { (node, stop) in
+			//пришлось корректировать тут (поэтому условие -150 а не 0 как по логике должно быть
+			if node.position.y <= -100 {
+				node.removeFromParent()
+			}
+		}
+
+		//Метод - который проверяет, если позиция объекта по оси у меньше нуля то такой объект надо удалить со сцены
+		enumerateChildNodes(withName: "bluePowerUp") { (node, stop) in
+			//пришлось корректировать тут (поэтому условие -150 а не 0 как по логике должно быть
+			if node.position.y <= -100 {
+				node.removeFromParent()
+			}
+		}
+		
 		//сделаем проверку в обратную сторону и удаление спрайтов наших выстрелов которые улетят за экран (у = + 100)
 		enumerateChildNodes(withName: "shotSprite") { (node, stop) in
 			//я хочу что бы если вылел за вернюю гриницу экрана + 100, он бы удалялся
@@ -256,14 +275,14 @@ class GameScene: ParentScene {
 
 	//ловим действие
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		
+
 		//ловим первое касание на текущем экране (место на которое мы нажали)
 		let location = touches.first!.location(in: self)
-		
+
 		//метод addPoint позволяет получить обьект под той областью на которую мы нажали
 		//(предположительно наша кнопка)
 		let node = self.atPoint(location)
-		
+
 		//теперь проверяем что под этой областью надодиться нода "pause"
 		if node.name == "pause" {
 
@@ -288,7 +307,7 @@ class GameScene: ParentScene {
 			//все наши обьекты - ноды внутри сцены и все экшены этих обьектов тоже ставляться на паузу)
 			self.scene?.isPaused = true
 
-//			остановился на уроке 34 время 3:40
+			//			остановился на уроке 34 время 3:40
 
 			//осуществим сам переход с тем видом (transition) который мы ранее выбрали
 			self.scene!.view?.presentScene(pauseScene, transition: transition)
@@ -315,8 +334,11 @@ extension GameScene: SKPhysicsContactDelegate {
 		//будем использовать принудительное удаление взрыва с экрана
 		let contactCategory: BitMaskKategory = [contact.bodyA.category, contact.bodyB.category]
 		switch contactCategory {
-		
+
 		case [.enemy, .player]: print("enemy vs player")
+			//так как у нас не всегда корректно подсчитаваются столконовения
+			//(иногда их происходит гораздо больше с одним и тем же телом мы написали проверку)
+
 			//если у нашего тела имя sprite
 			if contact.bodyA.node?.name == "sprite" {
 				//проверим что у нашего обьекта нет родителя (так как иногда происходят коллизии)
@@ -328,27 +350,47 @@ extension GameScene: SKPhysicsContactDelegate {
 				}
 			} else {
 				// иначе то удалить со сцены тело В (нашего врага)
-					if contact.bodyB.node?.parent != nil {
-						contact.bodyB.node?.removeFromParent()
-						self.lives -= 1
-					}
+				if contact.bodyB.node?.parent != nil {
+					contact.bodyB.node?.removeFromParent()
+					self.lives -= 1
+				}
 			}
-				//добавим наш созданный врыв на сцену
-				addChild(explosion!)
+			//добавим наш созданный врыв на сцену
+			addChild(explosion!)
 			//запустим нашу анимацию взрыва и после проигрывания удалим ее со сцены
 			self.run(waitForExplosionAction) { explosion?.removeFromParent() }
 
 			//проверим что с нашими жизнями нешего самолета
-			print(lives)
+			if lives == 0 {
+				let gameOverScene = GameOverScene(size: self.size)
+				gameOverScene.scaleMode = .aspectFill
+				let transition = SKTransition.doorsCloseVertical(withDuration: 1.0)
+				self.scene!.view?.presentScene(gameOverScene, transition: transition)
+			}
 
 		case [.player, .powerUp]: print("powerUp vs player")
 
+			// смотри 39 урок видео с 6-й минуты
+
 		case [.shot, .enemy]: print("shot vs enemy")
-			// то удалить со сцены тело А (нашего врага)
-			contact.bodyA.node?.removeFromParent()
-			// то удалить со сцены тело В (нашего врага)
-			contact.bodyB.node?.removeFromParent()
-			//сделаем тоже самое для пули и врага
+			
+			//если у нашего тела имя sprite
+			if contact.bodyA.node?.name == "sprite" {
+				//проверим что у нашего обьекта нет родителя (так как иногда происходят коллизии)
+				if contact.bodyA.node?.parent != nil {
+					// то удалить со сцены тело А (нашего врага)
+					contact.bodyA.node?.removeFromParent()
+					//Добавим подсчет очков
+					hud.score += 5
+				}
+			} else {
+				// иначе то удалить со сцены тело В (нашего врага)
+				if contact.bodyB.node?.parent != nil {
+					contact.bodyB.node?.removeFromParent()
+					hud.score += 5
+				}
+			}
+
 			addChild(explosion!)
 			//запустим нашу анимацию взрыва и после проигрывания удалим ее со сцены
 			self.run(waitForExplosionAction) { explosion?.removeFromParent() }

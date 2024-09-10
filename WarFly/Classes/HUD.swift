@@ -11,7 +11,17 @@ class HUD: SKNode {
 
 	//создаем элементы для пользовательского интерфейса
 	let scoreBackground = SKSpriteNode(imageNamed: "scores")
-	let scoreLabel = SKLabelNode(text: "1000")
+	let scoreLabel = SKLabelNode(text: "0")
+
+	//добавим переменную отвечающую за очки и сделаем наблюдателя который будет наблюдать за изменением переменной
+	//score, и как только она будет меняться он будет изменять значение scoreLabel.text и присваивать ему значение
+	//score
+	var score: Int = 0 {
+		didSet {
+			scoreLabel.text = score.description
+		}
+	}
+	
 	let menuButton = SKSpriteNode(imageNamed: "menu")
 	let life1 = SKSpriteNode(imageNamed: "life")
 	let life2 = SKSpriteNode(imageNamed: "life")
