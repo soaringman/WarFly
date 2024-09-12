@@ -248,6 +248,22 @@ class PlayerPlane: SKSpriteNode {
 			self.stillTurning = false
 		}
 	}
+
+	func greenPowerUpAnimate() {
+		let colorAction = SKAction.colorize(with: .green, colorBlendFactor: 1.0, duration: 0.2)
+		let ucolorAction = SKAction.colorize(with: .green, colorBlendFactor: 0.0, duration: 0.2)
+		let sequenceAction = SKAction.sequence([colorAction, ucolorAction])
+		let repeatAction = SKAction.repeat(sequenceAction, count: 5)
+		self.run(repeatAction)
+	}
+
+	func bluePowerUpAnimate() {
+		let colorAction = SKAction.colorize(with: .blue, colorBlendFactor: 1.0, duration: 0.2)
+		let ucolorAction = SKAction.colorize(with: .blue, colorBlendFactor: 0.0, duration: 0.2)
+		let sequenceAction = SKAction.sequence([colorAction, ucolorAction])
+		let repeatAction = SKAction.repeat(sequenceAction, count: 5)
+		self.run(repeatAction)
+	}
 }
 
 enum TurnDirection {

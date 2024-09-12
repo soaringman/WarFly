@@ -251,7 +251,7 @@ class GameScene: ParentScene {
 				node.removeFromParent()
 			}
 		}
-		
+
 		//сделаем проверку в обратную сторону и удаление спрайтов наших выстрелов которые улетят за экран (у = + 100)
 		enumerateChildNodes(withName: "shotSprite") { (node, stop) in
 			//я хочу что бы если вылел за вернюю гриницу экрана + 100, он бы удалялся
@@ -370,7 +370,31 @@ extension GameScene: SKPhysicsContactDelegate {
 
 		case [.player, .powerUp]: print("powerUp vs player")
 
-			// смотри 39 урок видео с 6-й минуты
+			if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
+				
+				//условие для пополнения жизней для тела А и В
+				if contact.bodyA.node?.name == "greenPowerUp" {
+					contact.bodyA.node?.removeFromParent()
+					lives = 3
+					player.greenPowerUpAnimate()
+
+				} else if contact.bodyB.node?.name == "greenPowerUp" {
+					contact.bodyB.node?.removeFromParent()
+					lives = 3
+					player.greenPowerUpAnimate()
+				}
+
+				//условие для смены оружия для тела А и В
+				if contact.bodyA.node?.name == "bluePowerUp" {
+					contact.bodyA.node?.removeFromParent()
+					player.bluePowerUpAnimate()
+
+				} else if contact.bodyB.node?.name == "bluePowerUp" {
+					contact.bodyB.node?.removeFromParent()
+					player.bluePowerUpAnimate()
+				}
+
+			}
 
 		case [.shot, .enemy]: print("shot vs enemy")
 			
@@ -378,7 +402,7 @@ extension GameScene: SKPhysicsContactDelegate {
 			if contact.bodyA.node?.name == "sprite" {
 				//проверим что у нашего обьекта нет родителя (так как иногда происходят коллизии)
 				if contact.bodyA.node?.parent != nil {
-					// то удалить со сцены тело А (нашего врага)
+					// то удалить со сцены тело А (наш выстрел)
 					contact.bodyA.node?.removeFromParent()
 					//Добавим подсчет очков
 					hud.score += 5
