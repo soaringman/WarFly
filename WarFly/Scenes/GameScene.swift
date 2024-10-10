@@ -320,6 +320,8 @@ class GameScene: ParentScene {
 extension GameScene: SKPhysicsContactDelegate {
 
 	func didBegin(_ contact: SKPhysicsContact) {
+
+
 		//добавим наш взрыв
 		let explosion = SKEmitterNode(fileNamed: "EnemyExposion")
 		//получим точку в которой у нас соприкасается пуля и наш враг
@@ -395,7 +397,7 @@ extension GameScene: SKPhysicsContactDelegate {
 				}
 
 			}
-
+			
 		case [.shot, .enemy]: print("shot vs enemy")
 			
 			//если у нашего тела имя sprite
@@ -414,6 +416,12 @@ extension GameScene: SKPhysicsContactDelegate {
 					hud.score += 5
 				}
 			}
+
+			//Добавим наш звук
+			let hitSoundAction = SKAction.playSoundFileNamed("hitSound", waitForCompletion: true)
+			run(hitSoundAction)
+
+			остановился тут (урок 40)
 
 			addChild(explosion!)
 			//запустим нашу анимацию взрыва и после проигрывания удалим ее со сцены

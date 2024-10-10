@@ -36,6 +36,8 @@
 		F08A19742C3593EA00432FFA /* Island.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08A19732C3593EA00432FFA /* Island.swift */; };
 		F0B26FD02C4968CB003DA27A /* PowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B26FCF2C4968CB003DA27A /* PowerUp.swift */; };
 		F0B26FD22C496D69003DA27A /* GreenPowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F0B26FD12C496D69003DA27A /* GreenPowerUp.atlas */; };
+		F0BC40352CA6C2F0000D6BD0 /* backgroundMusic.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F0BC40332CA6C2F0000D6BD0 /* backgroundMusic.m4a */; };
+		F0BC40362CA6C2F0000D6BD0 /* hitSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = F0BC40342CA6C2F0000D6BD0 /* hitSound.wav */; };
 		F0D090092C3BE61D005A2634 /* PlayerPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D090082C3BE61D005A2634 /* PlayerPlane.swift */; };
 		F0D0900B2C3BEA22005A2634 /* PlayerPlane.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F0D0900A2C3BEA22005A2634 /* PlayerPlane.atlas */; };
 		F0D0AF3E2C5E3413007C6A2D /* BitMaskKategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D0AF3D2C5E3413007C6A2D /* BitMaskKategory.swift */; };
@@ -76,6 +78,8 @@
 		F08A19732C3593EA00432FFA /* Island.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Island.swift; sourceTree = "<group>"; };
 		F0B26FCF2C4968CB003DA27A /* PowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUp.swift; sourceTree = "<group>"; };
 		F0B26FD12C496D69003DA27A /* GreenPowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = GreenPowerUp.atlas; sourceTree = "<group>"; };
+		F0BC40332CA6C2F0000D6BD0 /* backgroundMusic.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = backgroundMusic.m4a; sourceTree = "<group>"; };
+		F0BC40342CA6C2F0000D6BD0 /* hitSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hitSound.wav; sourceTree = "<group>"; };
 		F0D090082C3BE61D005A2634 /* PlayerPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPlane.swift; sourceTree = "<group>"; };
 		F0D0900A2C3BEA22005A2634 /* PlayerPlane.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerPlane.atlas; sourceTree = "<group>"; };
 		F0D0AF3D2C5E3413007C6A2D /* BitMaskKategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitMaskKategory.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				F05448E42C2DAFA4003950CD /* AppDelegate.swift */,
+				F0BC40332CA6C2F0000D6BD0 /* backgroundMusic.m4a */,
+				F0BC40342CA6C2F0000D6BD0 /* hitSound.wav */,
 				F05448EE2C2DAFA4003950CD /* Main.storyboard */,
 				F05448F12C2DAFA5003950CD /* Assets.xcassets */,
 				F05448F32C2DAFA5003950CD /* LaunchScreen.storyboard */,
@@ -276,7 +282,9 @@
 				F07E396B2C5AA90500E5D9B6 /* YellowAmmo.atlas in Resources */,
 				F0B26FD22C496D69003DA27A /* GreenPowerUp.atlas in Resources */,
 				F0D0900B2C3BEA22005A2634 /* PlayerPlane.atlas in Resources */,
+				F0BC40362CA6C2F0000D6BD0 /* hitSound.wav in Resources */,
 				F05448F22C2DAFA5003950CD /* Assets.xcassets in Resources */,
+				F0BC40352CA6C2F0000D6BD0 /* backgroundMusic.m4a in Resources */,
 				F08661052C86209B00FB3026 /* EnemyExposion.sks in Resources */,
 				F0E12AF62C59168700854D91 /* BluePowerUp.atlas in Resources */,
 				F05448F52C2DAFA5003950CD /* LaunchScreen.storyboard in Resources */,
